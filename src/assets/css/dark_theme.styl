@@ -1,0 +1,34 @@
+/***************************************************************************/
+/*                     Color variables, for dark theme                     */
+/***************************************************************************/
+
+// Here is how we do this shit
+// We define 2 major sets -- bg, fg (background and foreground)
+// Along with a unique accent set
+
+// Within each major set, we have 2 subdivisions: primary and inverse
+// where primary need not be notated explicitly
+
+// Each subset will have atleast on base color, and then depending on need,
+// additional variants in terms of emphasis -- light, lighter etc....
+// which strictly doesn't match the color scale you know for a light theme
+
+$bg-colors = {
+  primary: #000000                     // Deep black as main background
+  light: #0f0f0f                       // Nav bar background
+  inverse: #ffffff                     // Project cards
+}
+
+$fg-colors = {
+  primary: #ffffff                     // Basic text on deep black
+  light: #4a4a4a                       // Subtitles and shit
+  lighter: #9b9b9b                     // Nav bar icons
+  inverse: #0f0f0f                     // Used on project cards
+  inverse-light: #9b9b9b               // Again subtitles on project cards
+}
+
+$accent-colors = {
+  primary: #00d646
+}
+
+@require "./_theme-base.styl"
