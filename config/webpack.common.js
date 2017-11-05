@@ -14,7 +14,8 @@ module.exports = {
     entry: {
         app: './src/main.ts',
         vendors: './src/vendors.ts',
-        polyfills: './src/polyfills.ts'
+        polyfills: './src/polyfills.ts',
+        dark_theme: './src/assets/css/dark_theme.styl'
     },
 
     // Resolution method for imports without extensions.
@@ -91,7 +92,8 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: 'src/index.html',
+            excludeChunks: ['dark_theme']
         })
     ]
 };
