@@ -7,6 +7,7 @@ var webpack = require('webpack');
 
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 
 module.exports = {
     // Entry points to build bundles from
@@ -15,7 +16,8 @@ module.exports = {
         app: './src/main.ts',
         vendors: './src/vendors.ts',
         polyfills: './src/polyfills.ts',
-        dark_theme: './src/assets/css/dark_theme.styl'
+        dark_theme: './src/assets/css/dark_theme.styl',
+        light_theme: './src/assets/css/light_theme.styl'
     },
 
     // Resolution method for imports without extensions.
@@ -42,6 +44,7 @@ module.exports = {
             // Basic html loader
             {
                 test: /\.html$/,
+                exclude: helpers.root('src', 'index.html'),
                 loader: 'html-loader'
             },
 
@@ -92,8 +95,10 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
+            title: "Blasted you know",
             template: 'src/index.html',
-            excludeChunks: ['dark_theme']
-        })
+            excludeAssets: [/.*_theme.*.css/]
+        }),
+        new HtmlWebpackExcludeAssetsPlugin()
     ]
 };
