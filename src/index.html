@@ -2,9 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
-        <title>Anish George's Portfolio</title>
+        <title><%= htmlWebpackPlugin.options.title %></title>
+        <link id="theme-link" rel="stylesheet"/>
     </head>
-    <body>
-        <app></app>
+    <body class="bg-primary fg-primary">
+        <app
+            dark-theme="<%= htmlWebpackPlugin.files.chunks.dark_theme.css[0] %>"
+            light-theme="<%= htmlWebpackPlugin.files.chunks.light_theme.css[0] %>"
+        ></app>
     </body>
 </html>

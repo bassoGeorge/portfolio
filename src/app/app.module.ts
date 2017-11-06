@@ -4,6 +4,7 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 // Some auxilary style imports
+import '../assets/css/normalize.css';
 import '../assets/css/site.styl';
 
 @NgModule({
