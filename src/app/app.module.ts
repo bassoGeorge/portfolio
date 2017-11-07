@@ -1,15 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+
+import { CoreModule } from './core/core.module';
+import { SkillsModule } from './skills/skills.module';
 
 import { AppComponent } from './app.component';
 
-// Some auxilary style imports
-import '../assets/css/normalize.css';
-import '../assets/css/site.styl';
+const appRoutes: Routes = [
+    { path: 'skills', loadChildren: () => SkillsModule },
+    { path: '', loadChildren: () => CoreModule },
+    { path: '**', redirectTo: '' }
+]
 
 @NgModule({
-    imports: [ BrowserModule ],
-    declarations: [ AppComponent ],
+    imports: [
+        RouterModule.forRoot(
+            appRoutes,
+            { enableTracing: true } // only for debugging purposes
+        ),
+        BrowserModule,
+        CoreModule,
+        SkillsModule
+    ],
+    declarations: [
+        AppComponent
+    ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }

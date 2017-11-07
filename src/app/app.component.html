@@ -1,4 +1,9 @@
 <div>
     <h2>Hello World</h2>
-    <button (click)="switchTheme()">Switch</button>
+    <nav>
+        <a routerLink="/">Home</a>
+        <a routerLink="/about-me">About Me</a>
+        <a routerLink="/skills">Skills</a>
+    </nav>
+    <router-outlet></router-outlet>
 </div>

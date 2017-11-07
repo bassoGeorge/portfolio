@@ -2,8 +2,7 @@ import { Component, ElementRef } from '@angular/core';
 
 @Component({
     selector: 'app',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.styl']
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
     private theme = 'dark';
