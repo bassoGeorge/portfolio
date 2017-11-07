@@ -2,14 +2,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { SkillsModule } from './skills/skills.module';
+
 import { AppComponent } from './app.component';
-import { HomePage } from './shared/pages/home/home.page';
-import { AboutMePage } from './shared/pages/about-me/about-me.page';
+import { HomePage } from './core/pages/home/home.page';
+import { AboutMePage } from './core/pages/about-me/about-me.page';
 
 const appRoutes: Routes = [
     { path: '', component: HomePage },
     { path: 'about-me', component: AboutMePage },
+    { path: 'skills', loadChildren: () => SkillsModule },
     { path: '**', redirectTo: '' }
 ]
 
@@ -24,7 +27,8 @@ import '../assets/css/site.styl';
             { enableTracing: true } // only for debugging purposes
         ),
         BrowserModule,
-        SharedModule
+        SkillsModule,
+        CoreModule
     ],
     declarations: [
         AppComponent
