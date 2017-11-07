@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
+import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { HomePage } from './shared/pages/home/home.page';
 import { AboutMePage } from './shared/pages/about-me/about-me.page';
@@ -22,12 +23,11 @@ import '../assets/css/site.styl';
             appRoutes,
             { enableTracing: true } // only for debugging purposes
         ),
-        BrowserModule
+        BrowserModule,
+        SharedModule
     ],
     declarations: [
-        AppComponent,
-        HomePage,
-        AboutMePage
+        AppComponent
     ],
     bootstrap: [ AppComponent ]
 })
