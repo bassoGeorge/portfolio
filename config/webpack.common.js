@@ -95,7 +95,6 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            title: "Blasted you know",
             template: 'src/index.html',
             excludeAssets: [/.*_theme.*.css/]
         }),
