@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Anish George's Portfolio</title>
-        <link id="theme-link" rel="stylesheet"/>
         <base href="/" />
         <script>
             window.BuildData = {
@@ -14,10 +13,7 @@
             };
         </script>
     </head>
-    <body class="bg-primary fg-primary">
-        <app
-            dark-theme="<%= htmlWebpackPlugin.files.chunks.dark_theme.css[0] %>"
-            light-theme="<%= htmlWebpackPlugin.files.chunks.light_theme.css[0] %>"
-        ></app>
+    <body>
+        <app></app>
     </body>
 </html>
