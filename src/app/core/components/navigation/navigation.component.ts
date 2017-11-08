@@ -11,5 +11,9 @@ import { Component } from '@angular/core';
 export class NavigationComponent {
     public images = {
         home: require('./code.svg'),
+        aboutMe: require('./code.svg'),
+        skills: require('./code.svg'),
+        myWork: require('./code.svg'),
+        contactMe: require('./code.svg'),
     }
 }
