@@ -10,7 +10,7 @@ import { AboutMePage } from './pages/about-me/about-me.page';
 import { coreRoutes } from './core.routes';
 import { ThemeService } from './theme.service';
 
-import { NavigationComponent } from './components';
+import { NavigationComponent, ThemeSwitcherComponent } from './components';
 
 // Some auxilary style imports
 import '../../assets/css/normalize.css';
@@ -26,13 +26,15 @@ declare global {
     declarations: [
         HomePage,
         AboutMePage,
-        NavigationComponent
+        NavigationComponent,
+        ThemeSwitcherComponent
     ],
     providers: [
         ThemeService
     ],
     exports: [
-        NavigationComponent
+        NavigationComponent,
+        ThemeSwitcherComponent
     ]
 })
 export class CoreModule { }
