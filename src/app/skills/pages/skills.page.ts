@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'skills',
+    selector: 'skills-page',
     template: `<h1>{{ title }}</h1>`
 })
 export class SkillsPage {
