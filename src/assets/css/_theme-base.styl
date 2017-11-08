@@ -19,5 +19,28 @@ for name, color in $accent-colors
   .bg-acc-{name}
     background-color: color
 
+  .fg-acc-{name}
+    color: color
+
   .bdr-acc-{name}
     border-color: color
+
+
+/* Now we set some very basic colors */
+body
+  @extend .bg-primary;
+  @extend .fg-primary;
+
+
+a
+  @extend .fg-acc-primary;
+  // TODO: add hover and other effects
+
+h1
+  @extend .fg-acc-primary;
+
+
+button,
+a.button
+  @extend .fg-acc-primary
+  @extend .bdr-acc-primary
