@@ -3,12 +3,11 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CoreModule } from './core/core.module';
-import { SkillsModule } from './skills/skills.module';
 
 import { AppComponent } from './app.component';
 
 const appRoutes: Routes = [
-    { path: 'skills', loadChildren: () => SkillsModule },
+    { path: 'skills', loadChildren: './skills/skills.module#SkillsModule' },
     { path: '', loadChildren: () => CoreModule },
     { path: '**', redirectTo: '' }
 ]
@@ -20,8 +19,7 @@ const appRoutes: Routes = [
             { enableTracing: true } // only for debugging purposes
         ),
         BrowserModule,
-        CoreModule,
-        SkillsModule
+        CoreModule
     ],
     declarations: [
         AppComponent
