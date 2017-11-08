@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'home-page',
-    template: `<h1>{{ title }}</h1>`
+    templateUrl: './home.page.html'
 })
 export class HomePage {
     title = "Home Page";

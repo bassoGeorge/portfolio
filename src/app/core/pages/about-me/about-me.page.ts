@@ -5,5 +5,4 @@ import { Component } from '@angular/core';
     templateUrl: './about-me.page.html'
 })
 export class AboutMePage {
-    title = "About Me";
 }

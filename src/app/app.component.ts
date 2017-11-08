@@ -1,4 +1,7 @@
-import { Component, ElementRef } from '@angular/core';
+///////////////////////////////////////////////////////////////////////////////
+//              The main component to get this show on the road              //
+///////////////////////////////////////////////////////////////////////////////
+import { Component } from '@angular/core';
 
 import { ThemeService } from './core';
 
