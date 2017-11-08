@@ -5,6 +5,14 @@
         <title>Anish George's Portfolio</title>
         <link id="theme-link" rel="stylesheet"/>
         <base href="/" />
+        <script>
+            window.BuildData = {
+                themes: {
+                    dark: '<%= htmlWebpackPlugin.files.chunks.dark_theme.css[0] %>',
+                    light: '<%= htmlWebpackPlugin.files.chunks.light_theme.css[0] %>'
+                }
+            };
+        </script>
     </head>
     <body class="bg-primary fg-primary">
         <app
