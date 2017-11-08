@@ -10,6 +10,12 @@ export class ThemeService {
     private currentTheme = 'dark';
 
     constructor() {
+        var link = document.createElement("link");
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("id", "theme-link");
+
+        document.head.appendChild(link);
+
         this.themes = Object.assign({}, window.BuildData.themes);
     }
 
@@ -17,5 +23,9 @@ export class ThemeService {
         this.currentTheme = theme;
         var src = this.themes[theme];
         document.getElementById("theme-link").setAttribute("href", src);
+    }
+
+    switchTheme() {
+        this.setTheme(this.currentTheme == 'dark' ? 'light' : 'dark');
     }
 }
