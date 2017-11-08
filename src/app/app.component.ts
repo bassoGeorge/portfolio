@@ -1,6 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 
-import { ThemeService } from './core/theme.service';
+import { ThemeService } from './core';
 
 @Component({
     selector: 'app',
