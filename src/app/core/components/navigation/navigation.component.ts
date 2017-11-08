@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //          The main navigation component at the bottom of the page          //
 ///////////////////////////////////////////////////////////////////////////////
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'navigation',
@@ -9,5 +9,7 @@ import { Component, ElementRef } from '@angular/core';
     styleUrls: ['./navigation.component.styl']
 })
 export class NavigationComponent {
-
+    public images = {
+        home: require('./code.svg'),
+    }
 }

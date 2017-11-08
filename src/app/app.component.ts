@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //              The main component to get this show on the road              //
 ///////////////////////////////////////////////////////////////////////////////
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { ThemeService } from './core';
 

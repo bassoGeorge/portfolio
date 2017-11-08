@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //                      A simple theme switching button                      //
 ///////////////////////////////////////////////////////////////////////////////
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { ThemeService } from '../../theme.service';
 
