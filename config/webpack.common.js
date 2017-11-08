@@ -78,6 +78,20 @@ module.exports = {
                 test: /\.styl$/,
                 include: helpers.root('src', 'app'),
                 loaders: 'raw-loader!stylus-loader'
+            },
+            {
+                test: /\.(eot|ttf|woff|woff2|otf)$/,
+                loaders: [{
+                    loader: 'file-loader',
+                    options: { name: 'assets/fonts/[name].[ext]'}
+                }]
+            },
+            {
+                test: /\.(svg|png|jpg)$/,
+                loaders: [{
+                    loader: 'file-loader',
+                    options: { name: 'assets/images/[name].[ext]'}
+                }]
             }
         ]
     },
