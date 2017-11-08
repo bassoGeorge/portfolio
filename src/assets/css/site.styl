@@ -3,6 +3,7 @@
 /***************************************************************************/
 
 @require "./_fonts.css"
+@require "./_typography"
 
 *
   box-sizing: border-box;
@@ -14,11 +15,6 @@ body
   height: 100%
   padding: 1em
   padding-bottom: calc(100px + 1em) // On account of the navigation item
-  font-family: Saira
-  font-weight: 400
-
-h1
-  font-family: Headache
 
 a.button,
 button
@@ -34,3 +30,12 @@ ul.horizontal-flat-list
   li
     display: inline-block
     margin-right: 30px;
+
+
+.centered-container
+  height: 100%
+  width: 100%
+  display: flex
+  justify-content: stretch
+  align-items: center
+  padding: 0 120px
