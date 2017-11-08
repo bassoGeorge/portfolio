@@ -3,3 +3,4 @@
 ///////////////////////////////////////////////////////////////////////////////
 export { CoreModule } from './core.module';
 export { ThemeService } from './theme.service';
+export { NavigationComponent } from './components';

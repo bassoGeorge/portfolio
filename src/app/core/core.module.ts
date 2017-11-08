@@ -10,6 +10,8 @@ import { AboutMePage } from './pages/about-me/about-me.page';
 import { coreRoutes } from './core.routes';
 import { ThemeService } from './theme.service';
 
+import { NavigationComponent } from './components';
+
 // Some auxilary style imports
 import '../../assets/css/normalize.css';
 import '../../assets/css/site.styl';
@@ -23,10 +25,14 @@ declare global {
     imports: [ RouterModule.forChild(coreRoutes) ],
     declarations: [
         HomePage,
-        AboutMePage
+        AboutMePage,
+        NavigationComponent
     ],
     providers: [
         ThemeService
+    ],
+    exports: [
+        NavigationComponent
     ]
 })
 export class CoreModule { }
