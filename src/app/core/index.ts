@@ -3,4 +3,5 @@
 ///////////////////////////////////////////////////////////////////////////////
 export { CoreModule } from './core.module';
 export { ThemeService } from './theme.service';
-export { NavigationComponent } from './components';
+// We don't really need to export pure components
+// export { NavigationComponent } from './components';

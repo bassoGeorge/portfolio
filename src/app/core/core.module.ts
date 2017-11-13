@@ -39,8 +39,7 @@ declare global {
     ],
     exports: [
         NavigationComponent,
-        ThemeSwitcherComponent,
-        PageLinkComponent
+        ThemeSwitcherComponent
     ]
 })
 export class CoreModule { }
