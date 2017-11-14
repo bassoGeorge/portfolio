@@ -7,6 +7,5 @@ import { Component } from '@angular/core';
 export class SkillsPage {
 
     ngOnInit() {
-        console.log("Skills loaded !!");
     }
 }

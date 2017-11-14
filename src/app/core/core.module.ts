@@ -3,6 +3,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './pages/home/home.page';
@@ -26,7 +27,10 @@ declare global {
 }
 
 @NgModule({
-    imports: [ RouterModule.forChild(coreRoutes) ],
+    imports: [
+        RouterModule.forChild(coreRoutes),
+        CommonModule
+    ],
     declarations: [
         HomePage,
         AboutMePage,

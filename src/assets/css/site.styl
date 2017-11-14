@@ -12,11 +12,13 @@ html
   font-size: 62.5%
 
 body
+  font-size: 1.6rem
   height: 100%
   padding: 1rem
   padding-bottom: calc(10rem + 1rem) // On account of the navigation item
 
 @require "./_typography"
+@require "./_forms"
 
 
 a.button,
@@ -26,6 +28,7 @@ button
   background: transparent
   padding: 5px 25px
   cursor: pointer
+  font-size: 2.2rem
 
 
 ul.horizontal-flat-list
@@ -43,3 +46,7 @@ ul.horizontal-flat-list
   justify-content: stretch
   align-items: center
   padding: 0 120px
+
+.at-ends-container
+  display: flex
+  justify-content: space-between

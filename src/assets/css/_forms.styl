@@ -1,0 +1,41 @@
+/////////////////////////////////////////////////////////////////////////////
+//          This section handles the form styling used in the app          //
+/////////////////////////////////////////////////////////////////////////////
+
+$form-gutter = 2rem
+
+form
+  div[role='group']
+    display: flex
+    align-items: stretch
+    margin-bottom: $form-gutter
+
+    input,
+    textarea
+      border-radius: 0
+
+    input:first-child,
+    textarea:first-child
+      border-top-left-radius: 2px
+      border-bottom-left-radius: 2px
+
+    input:last-child,
+    textarea:last-child
+      border-top-right-radius: 2px
+      border-bottom-right-radius: 2px
+
+  div[role='group'] > *
+    flex: 1
+
+
+input,
+textarea
+  background: none
+  font-size: 2rem
+  padding: 1.7rem 0 1.7rem 2.5rem
+  min-height: 6rem
+  border: 1px solid
+  border-radius: 2px
+
+textarea
+  width: 100%
