@@ -3,18 +3,21 @@
 /***************************************************************************/
 
 @require "./_fonts.css"
-@require "./_typography"
 
 *
   box-sizing: border-box;
 
 html
   height: 100%
+  font-size: 62.5%
 
 body
   height: 100%
-  padding: 1em
-  padding-bottom: calc(100px + 1em) // On account of the navigation item
+  padding: 1rem
+  padding-bottom: calc(10rem + 1rem) // On account of the navigation item
+
+@require "./_typography"
+
 
 a.button,
 button
@@ -30,7 +33,7 @@ ul.horizontal-flat-list
   padding-left: 0
   li
     display: inline-block
-    margin-right: 30px;
+    margin-right: 3rem;
 
 
 .centered-container
