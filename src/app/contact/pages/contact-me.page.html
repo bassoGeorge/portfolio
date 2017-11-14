@@ -1,17 +1,17 @@
 <h2>CONTACT ME</h2>
 <section>
     <form [formGroup]="contactForm" novalidate>
-        <fieldset>
+        <div role="group">
             <input name="name"  type="text"  formControlName="name"  placeholder="Name*"/>
             <input name="email" type="email" formControlName="email" placeholder="Email*"/>
-        </fieldset>
-        <fieldset>
+        </div>
+        <div role="group">
             <input name="subject" type="text" formControlName="subject"  placeholder="Subject"/>
-        </fieldset>
-        <fieldset>
+        </div>
+        <div role="group">
             <textarea formControlName="message" placeholder="Message*">
             </textarea>
-        </fieldset>
+        </div>
     </form>
     <p>
         Debug: {{ contactForm.value | json }}
