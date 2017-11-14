@@ -2,7 +2,7 @@
 /*   All the classes required by the application which will impart color   */
 /***************************************************************************/
 
-/* TODO */
+$danger-color = red
 
 for name, color in $bg-colors
   .bg-{name}
@@ -25,6 +25,14 @@ for name, color in $accent-colors
   .bdr-acc-{name}
     border-color: color
 
+.bg-danger
+  background-color: $danger-color
+
+.fg-danger
+  color: $danger-color
+
+.bdr-danger
+  border-color: $danger-color
 
 /* Now we set some very basic colors */
 body
@@ -54,3 +62,7 @@ input:focus,
 textarea:focus
   @extend .fg-acc-primary
   @extend .bdr-acc-primary
+
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid
+  @extend .bdr-danger

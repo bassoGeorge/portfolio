@@ -1,22 +1,25 @@
-<h2>CONTACT ME</h2>
-<section>
-    <form [formGroup]="contactForm" novalidate>
-        <div role="group">
-            <input name="name"  type="text"  formControlName="name"  placeholder="Name*"/>
-            <input name="email" type="email" formControlName="email" placeholder="Email*"/>
-        </div>
-        <div role="group">
-            <input name="subject" type="text" formControlName="subject"  placeholder="Subject"/>
-        </div>
-        <div role="group">
-            <textarea formControlName="message" placeholder="Message*">
-            </textarea>
-        </div>
-    </form>
-    <p>
-        Debug: {{ contactForm.value | json }}
-    </p>
-    <p>
-        DebugStat: {{ contactForm.status | json }}
-    </p>
-</section>
+<div class="centered-container">
+    <main>
+        <h2>CONTACT ME</h2>
+        <section>
+            <form [formGroup]="contactForm" novalidate>
+                <div role="group">
+                    <input name="name"  type="text"  formControlName="name"  placeholder="Name*"/>
+                    <input name="email" type="email" formControlName="email" placeholder="Email*"/>
+                </div>
+                <div role="group">
+                    <input name="subject" type="text" formControlName="subject"  placeholder="Subject"/>
+                </div>
+                <div role="group">
+                    <textarea formControlName="message" placeholder="Message*">
+                    </textarea>
+                </div>
+            </form>
+            <div class="at-ends-container">
+                <button>Connect with me</button>
+                <button>SEND</button>
+            </div>
+        </section>
+
+    </main>
+</div>
