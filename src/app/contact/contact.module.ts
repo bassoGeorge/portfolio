@@ -2,6 +2,7 @@
 //                               Contact module                              //
 ///////////////////////////////////////////////////////////////////////////////
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -14,7 +15,8 @@ const contactRoutes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forChild(contactRoutes),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CommonModule
     ],
     declarations: [
         ContactMePage
