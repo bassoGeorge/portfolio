@@ -13,8 +13,7 @@ import { ThemeService } from './theme.service';
 
 import {
     NavigationComponent,
-    ThemeSwitcherComponent,
-    PageLinkComponent
+    ThemeSwitcherComponent
 } from './components';
 
 // Some auxilary style imports
@@ -35,8 +34,7 @@ declare global {
         HomePage,
         AboutMePage,
         NavigationComponent,
-        ThemeSwitcherComponent,
-        PageLinkComponent
+        ThemeSwitcherComponent
     ],
     providers: [
         ThemeService

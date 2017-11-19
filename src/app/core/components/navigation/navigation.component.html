@@ -1,16 +1,10 @@
 <nav class="bg-light">
     <ul class="navigation--pages horizontal-flat-list">
-        <li>
-            <page-link target="/home" name="Home" [img]="images.home"></page-link>
-        </li>
-        <li>
-            <page-link target="/about-me" name="About Me" [img]="images.aboutMe"></page-link>
-        </li>
-        <li>
-            <page-link target="/skills" name="Skills" [img]="images.skills"></page-link>
-        </li>
-        <li>
-            <page-link target="/contact-me" name="Contact Me" [img]="images.contactMe"></page-link>
+        <li *ngFor="let page of pages">
+            <a routerLink="{{page.target}}" routerLinkActive="page-link-active">
+                <img [src]="page.img"/>
+                <span>{{page.name}}</span>
+            </a>
         </li>
     </ul>
     <div class="navigation--quick-links">

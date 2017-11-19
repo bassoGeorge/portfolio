@@ -9,11 +9,25 @@ import { Component } from '@angular/core';
     styleUrls: ['./navigation.component.styl']
 })
 export class NavigationComponent {
-    public images = {
-        home: require('./code.svg'),
-        aboutMe: require('./code.svg'),
-        skills: require('./code.svg'),
-        myWork: require('./code.svg'),
-        contactMe: require('./code.svg'),
-    }
+    public pages = [{
+        name: "Home",
+        img: require('./code.svg'),
+        target: "/home"
+    }, {
+        name: "About Me",
+        img: require('./code.svg'),
+        target: "/about-me"
+    // }, {
+    //     name: "My Work",
+    //     img: require('./code.svg'),
+    //     target: "/home"
+    }, {
+        name: "Skills",
+        img: require('./code.svg'),
+        target: "/skills"
+    }, {
+        name: "Contact Me",
+        img: require('./code.svg'),
+        target: "/contact-me"
+    }];
 }
