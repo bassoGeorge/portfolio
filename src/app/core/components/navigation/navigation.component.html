@@ -2,7 +2,7 @@
     <ul class="navigation--pages horizontal-flat-list">
         <li *ngFor="let page of pages">
             <a id="page-nav-link-{{page.id}}" routerLink="{{page.target}}" routerLinkActive="page-link-active">
-                <img [src]="page.img"/>
+                <img [src]="getPageIcon(page)"/>
                 <span>{{page.name}}</span>
             </a>
         </li>
