@@ -13,7 +13,8 @@ import { ThemeService } from './theme.service';
 
 import {
     NavigationComponent,
-    ThemeSwitcherComponent
+    ThemeSwitcherComponent,
+    ParticlesComponent
 } from './components';
 
 // Some auxilary style imports
@@ -34,14 +35,16 @@ declare global {
         HomePage,
         AboutMePage,
         NavigationComponent,
-        ThemeSwitcherComponent
+        ThemeSwitcherComponent,
+        ParticlesComponent
     ],
     providers: [
         ThemeService
     ],
     exports: [
         NavigationComponent,
-        ThemeSwitcherComponent
+        ThemeSwitcherComponent,
+        ParticlesComponent
     ]
 })
 export class CoreModule { }
