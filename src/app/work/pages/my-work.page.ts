@@ -1,0 +1,11 @@
+///////////////////////////////////////////////////////////////////////////////
+//                             My work main page                             //
+///////////////////////////////////////////////////////////////////////////////
+import { Component } from '@angular/core';
+
+
+@Component({
+    selector: 'my-work-page',
+    templateUrl: './my-work.page.html'
+})
+export class MyWorkPage {}

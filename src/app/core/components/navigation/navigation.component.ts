@@ -2,6 +2,15 @@
 //          The main navigation component at the bottom of the page          //
 ///////////////////////////////////////////////////////////////////////////////
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+interface PageInfo {
+    id: string;
+    name: string;
+    img: string;
+    imgActive: string;
+    target: string;
+}
 
 @Component({
     selector: 'navigation',
@@ -9,25 +18,52 @@ import { Component } from '@angular/core';
     styleUrls: ['./navigation.component.styl']
 })
 export class NavigationComponent {
-    public pages = [{
+    constructor(private router: Router) {}
+
+    public pages: PageInfo[] = [{
+        id: 'home',
         name: "Home",
-        img: require('./code.svg'),
+        img: require('./assets/home_grey.svg'),
+        imgActive: require('./assets/home_green.svg'),
         target: "/home"
     }, {
+        id: 'about',
         name: "About Me",
-        img: require('./code.svg'),
+        img: require('./assets/about_grey.svg'),
+        imgActive: require('./assets/about_green.svg'),
         target: "/about-me"
-    // }, {
-    //     name: "My Work",
-    //     img: require('./code.svg'),
-    //     target: "/home"
     }, {
+        id: 'my-work',
+        name: "My Work",
+        img: require('./assets/work_grey.svg'),
+        imgActive: require('./assets/work_green.svg'),
+        target: "/my-work"
+    }, {
+        id: 'skills',
         name: "Skills",
-        img: require('./code.svg'),
+        img: require('./assets/skills_grey.svg'),
+        imgActive: require('./assets/skills_green.svg'),
         target: "/skills"
     }, {
+        id: 'contact-me',
         name: "Contact Me",
-        img: require('./code.svg'),
+        img: require('./assets/contact_grey.svg'),
+        imgActive: require('./assets/contact_green.svg'),
         target: "/contact-me"
     }];
+
+    public quickLinks = [{
+        name: "GitHub",
+        img: require('./assets/github.svg'),
+        target: '#'
+    },{
+        name: "Resume",
+        img: require('./assets/resume.svg'),
+        target: '#'
+    }];
+
+    getPageIcon(page: PageInfo) {
+        return this.router.isActive(page.target, false) ? page.imgActive : page.img;
+    }
+
 }

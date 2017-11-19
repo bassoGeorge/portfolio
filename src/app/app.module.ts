@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 const appRoutes: Routes = [
     { path: 'skills', loadChildren: './skills#SkillsModule' },
     { path: 'contact-me', loadChildren: './contact#ContactModule' },
+    { path: 'my-work', loadChildren: './work#WorkModule' },
     { path: '', loadChildren: () => CoreModule },
     { path: '**', redirectTo: '' }
 ]
