@@ -10,22 +10,27 @@ import { Component } from '@angular/core';
 })
 export class NavigationComponent {
     public pages = [{
+        id: 'home',
         name: "Home",
         img: require('./code.svg'),
         target: "/home"
     }, {
+        id: 'about',
         name: "About Me",
         img: require('./code.svg'),
         target: "/about-me"
-    // }, {
-    //     name: "My Work",
-    //     img: require('./code.svg'),
-    //     target: "/home"
     }, {
+        id: 'my-work',
+        name: "My Work",
+        img: require('./code.svg'),
+        target: "/my-work"
+    }, {
+        id: 'skills',
         name: "Skills",
         img: require('./code.svg'),
         target: "/skills"
     }, {
+        id: 'contact-me',
         name: "Contact Me",
         img: require('./code.svg'),
         target: "/contact-me"

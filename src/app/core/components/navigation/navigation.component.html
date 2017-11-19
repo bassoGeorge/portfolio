@@ -1,7 +1,7 @@
 <nav class="bg-light">
     <ul class="navigation--pages horizontal-flat-list">
         <li *ngFor="let page of pages">
-            <a routerLink="{{page.target}}" routerLinkActive="page-link-active">
+            <a id="page-nav-link-{{page.id}}" routerLink="{{page.target}}" routerLinkActive="page-link-active">
                 <img [src]="page.img"/>
                 <span>{{page.name}}</span>
             </a>
