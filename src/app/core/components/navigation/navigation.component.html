@@ -7,7 +7,14 @@
             </a>
         </li>
     </ul>
-    <div class="navigation--quick-links">
-        <theme-switcher></theme-switcher>
-    </div>
+    <ul class="navigation--quick-links horizontal-flat-list">
+        <li *ngFor="let link of quickLinks">
+            <a target="_blank" [href]="link.target">
+                <div class="icon">
+                    <img [src]="link.img"/>
+                </div>
+                <span>{{link.name}}</span>
+            </a>
+        </li>
+    </ul>
 </nav>

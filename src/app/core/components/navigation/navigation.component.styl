@@ -10,6 +10,17 @@ nav
   justify-content: space-between
   align-items: center
 
+  a
+    display: flex
+    align-items: center
+    font-size: 2.2rem
+    text-decoration: none
+    span
+      white-space: nowrap
+      margin-left: 0.6em
+      position: relative
+
+
 .navigation--pages
   li
     margin-left: 0
@@ -18,17 +29,9 @@ nav
     opacity: 0.9
     margin-left: 3rem
     position: relative
-    font-size: 2.2rem
-    text-decoration: none
-    display: flex
-    align-items: center
     overflow: hidden
     width: 1.8em
     transition: all 350ms ease-in-out
-    span
-      white-space: nowrap
-      margin-left: 0.6em
-      position: relative
     img
       max-height: 1.4em
 
@@ -45,3 +48,35 @@ nav
 
 #page-nav-link-contact-me.page-link-active
   width: 8em
+
+.navigation--quick-links
+  li
+    margin-left: 0
+    padding: 0 1em
+    position: relative
+  li::after
+    $height = 50%
+    content: ''
+    display: block
+    height: $height
+    width: 2px
+    background-color: white
+    position: absolute
+    right: 0
+    top: ((100% - $height) / 2);
+  li:first-child
+    padding-left: 0
+  li:last-child
+    padding-right: 0
+  li:last-child::after
+    display: none
+
+  a
+    color: white // Moving away from convention here
+    .icon
+      height: 2em
+      display: flex
+      justify-content: center
+
+      img
+         max-height: 100%

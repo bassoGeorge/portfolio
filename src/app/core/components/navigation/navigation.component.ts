@@ -52,7 +52,18 @@ export class NavigationComponent {
         target: "/contact-me"
     }];
 
+    public quickLinks = [{
+        name: "GitHub",
+        img: require('./assets/github.svg'),
+        target: '#'
+    },{
+        name: "Resume",
+        img: require('./assets/resume.svg'),
+        target: '#'
+    }];
+
     getPageIcon(page: PageInfo) {
         return this.router.isActive(page.target, false) ? page.imgActive : page.img;
     }
+
 }
