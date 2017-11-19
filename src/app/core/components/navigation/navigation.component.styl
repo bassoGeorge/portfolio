@@ -15,32 +15,35 @@ nav
     align-items: center
     font-size: 2.2rem
     text-decoration: none
+    img
+      transition: transform 300ms ease-in-out
     span
       white-space: nowrap
       margin-left: 0.6em
       position: relative
 
+  a:not(.page-link-active):hover
+    img
+      transform: translateY(-0.4rem);
+
 
 .navigation--pages
   li
     margin-left: 0
+    padding-top: 0.4rem
+    padding-bottom: 0.4rem
+    overflow: hidden
 
   a
-    opacity: 0.9
     margin-left: 3rem
     position: relative
-    overflow: hidden
     width: 1.8em
     transition: all 350ms ease-in-out
     img
       max-height: 1.4em
 
   a.page-link-active
-    opacity: 1
     width: 5em
-  a:hover
-    // transform: scale(1.03);
-    opacity: 1
 
 
 #page-nav-link-my-work.page-link-active
