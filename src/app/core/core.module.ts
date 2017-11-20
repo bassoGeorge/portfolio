@@ -18,6 +18,7 @@ import {
 } from './components';
 
 // Some auxilary style imports
+import 'animate.css/animate.css';
 import '../../assets/css/normalize.css';
 import '../../assets/css/site.styl';
 

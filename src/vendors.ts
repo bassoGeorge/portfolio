@@ -11,3 +11,6 @@ import 'rxjs';
 
 // Underscore
 import 'underscore';
+
+// Animate.css
+import 'animate.css/animate.css';

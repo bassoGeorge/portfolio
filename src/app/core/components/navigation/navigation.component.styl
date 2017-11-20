@@ -15,8 +15,6 @@ nav
     align-items: center
     font-size: 2.2rem
     text-decoration: none
-    img
-      transition: transform 300ms ease-in-out
     span
       white-space: nowrap
       margin-left: 0.6em
@@ -24,7 +22,7 @@ nav
 
   a:not(.page-link-active):hover
     img
-      transform: translateY(-0.4rem);
+      animation: pulse 500ms;
 
 
 .navigation--pages
