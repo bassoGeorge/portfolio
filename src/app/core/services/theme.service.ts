@@ -10,7 +10,7 @@ export class ThemeService {
     private currentTheme = 'dark';
 
     constructor() {
-        var link = document.createElement("link");
+        let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("id", "theme-link");
 
