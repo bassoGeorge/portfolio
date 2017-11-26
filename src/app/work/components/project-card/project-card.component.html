@@ -1,0 +1,17 @@
+<div class="project-card bg-inverse fg-inverse"> <!-- Maybe add some entrance animation, TODO -->
+    <div>
+        <h4>{{project.title}}</h4>
+        <p class="project-card--description">
+            {{project.shortDescription}}
+        </p>
+    </div>
+    <p class="project-card--tech fg-inverse-light">
+        {{project.getShortTechs()}}
+    </p>
+</div>
+<div (click)="select()"
+    class="project-card-overlay fg-inverse bg-acc-primary"><!-- Overlay to target click to show details -->
+    <div class="bdr-inverse bordered">
+        DETAILS
+    </div>
+</div>

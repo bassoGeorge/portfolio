@@ -1,1 +1,20 @@
-<h2>MY WORK</h2>
+<div class="centered-container">
+    <main>
+        <h2>MY WORK</h2>
+        <section class="work-grid">
+            <project-card
+                *ngFor="let item of projects"
+                [project]="item.project"
+                [style.gridRowEnd]="'span '+item.weight"
+            ></project-card>
+
+            <div style="grid-row-end: span 2;">
+            </div>
+
+            <!--
+            <project-card style="grid-row-end: span 5;"></project-card>
+            <project-card style="grid-row-end: span 3;"></project-card>
+            -->
+        </section>
+    </main>
+</div>

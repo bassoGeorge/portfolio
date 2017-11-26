@@ -1,0 +1,41 @@
+:host
+  position: relative
+
+.project-card
+  width: 100%
+  height: 100%
+  padding: 2rem
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+  h4
+    margin-top: 0
+
+  .project-card--description
+    font-size: 1.6rem
+    margin-bottom: 0
+
+  .project-card--tech
+    font-size: 1.5rem
+    margin: 0
+
+.project-card-overlay
+  opacity: 0
+  position: absolute
+  cursor: pointer
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  transition: opacity 300ms ease-in-out
+
+  div
+    font-size: 1.6rem
+    padding: .5em 1.3em
+
+:host(:hover) .project-card-overlay
+  opacity: 0.92
