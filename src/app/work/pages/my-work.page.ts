@@ -12,14 +12,14 @@ import { Project } from '../models';
 })
 export class MyWorkPage {
     projects: { weight: number, project: Project }[] = [{
-        weight: 6, project: new Project("WADI", "Email and SMS campaign delivery system", ['Google APIs', 'SQL'])
+        weight: 5, project: new Project("WADI", "Email and SMS campaign delivery system", ['Google APIs', 'SQL'])
     },{
-        weight: 4, project: new Project("Bigstream", "Data flows and process pipelines", ['CSS'])
+        weight: 5, project: new Project("Bigstream", "Data flows and process pipelines", ['CSS'])
     },{
-        weight: 7, project: new Project("Enfold", "Personal Digital Locker", ["AngularJS", "Python", "Microservices"])
+        weight: 6, project: new Project("Enfold", "Personal Digital Locker", ["AngularJS", "Python", "Microservices"])
     },{
-        weight: 3, project: new Project("BooksPlus", "AR for Books", ["CSS", "Wordpress"])
+        weight: 4, project: new Project("BooksPlus", "AR for Books", ["CSS", "Wordpress"])
     },{
-        weight: 10, project: new Project("poundWISHES", "Crowdfunding for pet shelters", ["CakePHP"])
+        weight: 10, project: new Project("poundWISHES", "Crowdfunding platform that enables animal-welfare organizations to create fundraising campaigns and find new donors.", ["CakePHP"])
     }]
 }

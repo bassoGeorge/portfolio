@@ -6,11 +6,16 @@ import { Project } from '../../models';
 
 @Component({
     selector: 'project-card',
-    template: `<div class="bg-inverse fg-inverse" style="height: 100%; width: 100%"></div>`
+    templateUrl: './project-card.component.html',
+    styleUrls: ['./project-card.component.styl']
 })
 export class ProjectCard {
     @Input() project: Project;
 
     ngOnInit() {
+    }
+
+    select() {
+        console.log("Clicked on project: "+this.project.title);
     }
 }
