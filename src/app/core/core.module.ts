@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { HomePage } from './pages/home/home.page';
 import { AboutMePage } from './pages/about-me/about-me.page';
 import { coreRoutes } from './core.routes';
-import { ThemeService } from './theme.service';
+import { ThemeService } from './services';
 
 import {
     NavigationComponent,
