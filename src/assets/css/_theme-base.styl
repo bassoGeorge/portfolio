@@ -25,6 +25,9 @@ for name, color in $accent-colors
   .bdr-acc-{name}
     border-color: color
 
+  .fill-acc-{name}
+    fill: color
+
 .bg-danger
   background-color: $danger-color
 
@@ -71,3 +74,8 @@ textarea:focus
 input.ng-touched.ng-invalid,
 textarea.ng-touched.ng-invalid
   @extend .bdr-danger
+
+.svg-active-acc
+  svg
+    .shadable-fill
+      @extend .fill-acc-primary

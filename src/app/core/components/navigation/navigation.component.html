@@ -1,8 +1,13 @@
 <nav class="bg-light">
     <ul class="navigation--pages horizontal-flat-list">
         <li *ngFor="let page of pages">
-            <a id="page-nav-link-{{page.id}}" routerLink="{{page.target}}" routerLinkActive="page-link-active">
+            <a id="page-nav-link-{{page.id}}" routerLink="{{page.target}}" routerLinkActive="page-link-active svg-active-acc">
+                <!--
                 <img [src]="getPageIcon(page)"/>
+                -->
+                <div class="icon" [innerHTML]="page.img">
+                </div>
+
                 <span>{{page.name}}</span>
             </a>
         </li>
@@ -10,8 +15,7 @@
     <ul class="navigation--quick-links horizontal-flat-list">
         <li *ngFor="let link of quickLinks">
             <a target="_blank" [href]="link.target">
-                <div class="icon">
-                    <img [src]="link.img"/>
+                <div class="icon" [innerHTML]="link.img">
                 </div>
                 <span>{{link.name}}</span>
             </a>

@@ -3,12 +3,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
-interface PageInfo {
+interface NavInfo {
     id: string;
     name: string;
-    img: string;
-    imgActive: string;
+    img: SafeHtml;
     target: string;
 }
 
@@ -18,52 +18,34 @@ interface PageInfo {
     styleUrls: ['./navigation.component.styl']
 })
 export class NavigationComponent {
-    constructor(private router: Router) {}
+    constructor(
+        private router: Router,
+        private ds: DomSanitizer
+    ) {}
 
-    public pages: PageInfo[] = [{
-        id: 'home',
-        name: "Home",
-        img: require('./assets/home_grey.svg'),
-        imgActive: require('./assets/home_green.svg'),
-        target: "/home"
-    }, {
-        id: 'about',
-        name: "About Me",
-        img: require('./assets/about_grey.svg'),
-        imgActive: require('./assets/about_green.svg'),
-        target: "/about-me"
-    }, {
-        id: 'my-work',
-        name: "My Work",
-        img: require('./assets/work_grey.svg'),
-        imgActive: require('./assets/work_green.svg'),
-        target: "/my-work"
-    }, {
-        id: 'skills',
-        name: "Skills",
-        img: require('./assets/skills_grey.svg'),
-        imgActive: require('./assets/skills_green.svg'),
-        target: "/skills"
-    }, {
-        id: 'contact-me',
-        name: "Contact Me",
-        img: require('./assets/contact_grey.svg'),
-        imgActive: require('./assets/contact_green.svg'),
-        target: "/contact-me"
-    }];
-
-    public quickLinks = [{
-        name: "GitHub",
-        img: require('./assets/github.svg'),
-        target: '#'
-    },{
-        name: "Resume",
-        img: require('./assets/resume.svg'),
-        target: '#'
-    }];
-
-    getPageIcon(page: PageInfo) {
-        return this.router.isActive(page.target, false) ? page.imgActive : page.img;
+    buildNav(id: string, name: string, target: string, img: string): NavInfo {
+        return {
+            id: id,
+            name: name,
+            img: this.ds.bypassSecurityTrustHtml(img),
+            target: target
+        }
     }
 
+    pages: NavInfo[] = [
+        this.buildNav('home', "Home", "/home", require('./assets/home.svg')),
+
+        this.buildNav('about', "About Me", "/about-me", require('./assets/about.svg')),
+
+        this.buildNav('my-work', "My Work", "/my-work", require('./assets/work.svg')),
+
+        this.buildNav('skills', "Skills", "/skills", require('./assets/skills.svg')),
+
+        this.buildNav('contact-me', "Contact Me", "/contact-me", require('./assets/contact.svg')),
+    ]
+
+    quickLinks: NavInfo[] = [
+        this.buildNav('github', "GitHub", 'https://github.com/bassoGeorge', require('./assets/github.svg')),
+        this.buildNav('resume', "Resume", '#', require('./assets/resume.svg'))
+    ];
 }
