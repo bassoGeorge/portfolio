@@ -1,0 +1,33 @@
+{
+  "projects": [{
+    "page": 1,
+    "work": [{
+      "title": "WADI",
+      "short": "Email and SMS campaign delivery system",
+      "techs": ["Google APIs", "SQL"],
+      "weight": 5
+    },{
+      "title": "Bigstream",
+      "short": "Data flows and process pipelines",
+      "techs": ["CSS"],
+      "weight": 5
+    },{
+      "title": "Enfold",
+      "short": "Personal Digital Locker",
+      "techs": ["AngularJS", "Python", "Microservices"],
+      "weight": 6
+    },{
+      "title": "BooksPlus",
+      "short": "AR for Books",
+      "techs": ["CSS", "Wordpress"],
+      "weight": 4
+    },{
+      "title": "poundWISHES",
+      "short": "Crowdfunding platform that enables animal-welfare organizations to create fundraising campaigns and find new donors.",
+      "techs": ["CakePHP"],
+      "weight": 10
+    }],
+    "personal": [],
+    "other": []
+  }]
+}
