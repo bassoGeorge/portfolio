@@ -87,11 +87,15 @@ module.exports = {
                 }]
             },
             {
-                test: /\.(svg|png|jpg)$/,
+                test: /\.(png|jpg)$/,
                 loaders: [{
                     loader: 'file-loader',
                     options: { name: 'assets/images/[name].[ext]'}
                 }]
+            },
+            {
+                test: /\.svg$/,
+                loader: 'svg-inline-loader'
             }
         ]
     },

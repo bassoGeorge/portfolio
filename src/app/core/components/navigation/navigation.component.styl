@@ -21,7 +21,7 @@ nav
       position: relative
 
   a:not(.page-link-active):hover
-    img
+    ::ng-deep svg
       animation: pulse 500ms;
 
 
@@ -40,8 +40,6 @@ nav
     position: relative
     width: 1.8em
     transition: all 350ms ease-in-out
-    img
-      max-height: 1.4em
 
     .icon
       height: 1.4em
@@ -81,9 +79,6 @@ nav
   a
     color: white // Moving away from convention here
     .icon
-      height: 2em
+      height: 1.4em
       display: flex
       justify-content: center
-
-      img
-         max-height: 100%
