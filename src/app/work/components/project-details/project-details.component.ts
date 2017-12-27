@@ -6,7 +6,8 @@ import { Project } from '../../models';
 
 @Component({
     selector: 'project-details',
-    templateUrl: './project-details.component.html'
+    templateUrl: './project-details.component.html',
+    styleUrls: ['./project-details.component.styl']
 })
 export class ProjectDetails {
     @Input() project: Project;

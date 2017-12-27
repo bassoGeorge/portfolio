@@ -2,26 +2,35 @@
     <main>
         <h2>MY WORK</h2>
         <!-- TODO: pagination -->
-        <section class="work-grid">
-            <project-card
-                *ngFor="let item of projects"
-                [project]="item.project"
-                [style.gridRowEnd]="'span '+item.weight"
-                (click)="showDetails(item.project)"
-            ></project-card>
+        <div class="projects-container">
 
-            <div style="grid-row-end: span 2;">
+            <div class="work-grid-container">
+                <section class="work-grid">
+                    <project-card
+                        *ngFor="let item of projects"
+                        [project]="item.project"
+                        [style.gridRowEnd]="'span '+item.weight"
+                        (click)="showDetails(item.project)"
+                    ></project-card>
+
+                    <div style="grid-row-end: span 2;">
+                    </div>
+
+                    <!--
+                         <project-card style="grid-row-end: span 5;"></project-card>
+                         <project-card style="grid-row-end: span 3;"></project-card>
+                    -->
+                </section>
+                <section style="text-align: center; flex-shrink: 1">
+                    <button>Navigation</button>
+                </section>
             </div>
 
-            <!--
-            <project-card style="grid-row-end: span 5;"></project-card>
-            <project-card style="grid-row-end: span 3;"></project-card>
-            -->
-        </section>
-        <project-details
-            *ngIf="detailView"
-            [project]="selectedProject"
-            (close)="closeDetails()"
-        ></project-details>
+            <project-details
+                *ngIf="detailView"
+                [project]="selectedProject"
+                (close)="closeDetails()"
+            ></project-details>
+        </div>
     </main>
 </div>
