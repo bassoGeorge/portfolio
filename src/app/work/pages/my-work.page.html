@@ -1,11 +1,13 @@
 <div class="centered-container">
     <main>
         <h2>MY WORK</h2>
+        <!-- TODO: pagination -->
         <section class="work-grid">
             <project-card
                 *ngFor="let item of projects"
                 [project]="item.project"
                 [style.gridRowEnd]="'span '+item.weight"
+                (click)="showDetails(item.project)"
             ></project-card>
 
             <div style="grid-row-end: span 2;">
@@ -16,5 +18,10 @@
             <project-card style="grid-row-end: span 3;"></project-card>
             -->
         </section>
+        <project-details
+            *ngIf="detailView"
+            [project]="selectedProject"
+            (close)="closeDetails()"
+        ></project-details>
     </main>
 </div>

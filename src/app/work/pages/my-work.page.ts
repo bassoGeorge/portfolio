@@ -11,6 +11,9 @@ import { Project } from '../models';
     styleUrls: ['./my-work.page.styl']
 })
 export class MyWorkPage {
+    detailView = false;
+    selectedProject: Project;
+
     projects: { weight: number, project: Project }[] = [{
         weight: 5, project: new Project("WADI", "Email and SMS campaign delivery system", ['Google APIs', 'SQL'])
     },{
@@ -22,4 +25,14 @@ export class MyWorkPage {
     },{
         weight: 10, project: new Project("poundWISHES", "Crowdfunding platform that enables animal-welfare organizations to create fundraising campaigns and find new donors.", ["CakePHP"])
     }]
+
+    showDetails(project: Project) {
+        this.selectedProject = project;
+        this.detailView = true;
+    }
+
+    closeDetails() {
+        this.detailView = false;
+        this.selectedProject = null;
+    }
 }
