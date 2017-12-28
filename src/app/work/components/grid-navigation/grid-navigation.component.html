@@ -1,0 +1,13 @@
+<span
+    (click)="previous()"
+    role="button" class="grid-nav-btn previous-page-btn">Prev</span>
+<div>
+    <span
+        *ngFor="let page of pages"
+        (click)="goToPageIndex(page)"
+        class="grid-nav-btn page-num-btn"
+        role="button">page {{page}}&nbsp;</span>
+</div>
+<span
+    (click)="next()"
+    role="button" class="grid-nav-btn next-page-btn">Next</span>

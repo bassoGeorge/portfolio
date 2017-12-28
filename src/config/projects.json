@@ -39,5 +39,30 @@
       "weight": 4
     }],
     "other": []
+  }, {
+    "page": 2,
+    "work": [],
+    "personal": [],
+    "other": [{
+      "title": "WADI",
+      "short": "Email/SMS campaign delivery system",
+      "techs": ["Google APIs", "SQL"],
+      "weight": 8
+    },{
+      "title": "Bigstream",
+      "short": "Data flows and process pipelines",
+      "techs": ["CSS"],
+      "weight": 10
+    },{
+      "title": "Enfold",
+      "short": "Personal Digital Locker",
+      "techs": ["AngularJS", "Python", "Microservices"],
+      "weight": 6
+    },{
+      "title": "BooksPlus",
+      "short": "AR for Books",
+      "techs": ["CSS", "Wordpress"],
+      "weight": 4
+    }]
   }]
 }

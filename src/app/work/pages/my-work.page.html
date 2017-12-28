@@ -4,7 +4,8 @@
         <!-- TODO: pagination -->
         <div class="projects-container">
 
-            <div class="work-grid-container">
+            <div class="work-grid-container"
+                [style.visibility]="detailView ? 'hidden': 'visible'">
                 <section class="work-grid">
                     <project-card
                         *ngFor="let item of workProjects"
@@ -48,9 +49,10 @@
                     ></project-card>
 
                 </section>
-                <section style="text-align: center; flex-shrink: 1">
-                    <button>Navigation</button>
-                </section>
+                <grid-navigation
+                    [pageCount] = "allData.length"
+                    (pageChange) = "goToPage($event)"
+                ></grid-navigation>
             </div>
 
             <project-details

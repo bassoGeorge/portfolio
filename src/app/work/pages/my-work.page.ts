@@ -55,9 +55,7 @@ export class MyWorkPage {
 
     ngOnInit() {
         if (this.allData.length > 0) {
-            this.workProjects = this.allData[0].work;
-            this.personalProjects = this.allData[0].personal;
-            this.otherProjects = this.allData[0].other;
+            this.goToPage(0);
         }
     }
 
@@ -70,5 +68,11 @@ export class MyWorkPage {
     closeDetails() {
         this.detailView = false;
         this.selectedProject = null;
+    }
+
+    goToPage(pageNum: number) {
+        this.workProjects = this.allData[pageNum].work;
+        this.personalProjects = this.allData[pageNum].personal;
+        this.otherProjects = this.allData[pageNum].other;
     }
 }
