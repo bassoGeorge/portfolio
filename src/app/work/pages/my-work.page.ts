@@ -3,7 +3,15 @@
 ///////////////////////////////////////////////////////////////////////////////
 import { Component } from '@angular/core';
 import { Project } from '../models';
+import { ConfigService } from '../../core';
 
+import * as _ from 'underscore';
+
+/* Handling projects with weights */
+interface WProject {
+    weight: number,
+    project: Project
+}
 
 @Component({
     selector: 'my-work-page',
@@ -11,20 +19,48 @@ import { Project } from '../models';
     styleUrls: ['./my-work.page.styl']
 })
 export class MyWorkPage {
+
+    // Whether to show the project details or not
     detailView = false;
+
+    // The current selected project for details view
     selectedProject: Project;
 
-    projects: { weight: number, project: Project }[] = [{
-        weight: 5, project: new Project("WADI", "Email and SMS campaign delivery system", ['Google APIs', 'SQL'])
-    },{
-        weight: 5, project: new Project("Bigstream", "Data flows and process pipelines", ['CSS'])
-    },{
-        weight: 6, project: new Project("Enfold", "Personal Digital Locker", ["AngularJS", "Python", "Microservices"])
-    },{
-        weight: 4, project: new Project("BooksPlus", "AR for Books", ["CSS", "Wordpress"])
-    },{
-        weight: 10, project: new Project("poundWISHES", "Crowdfunding platform that enables animal-welfare organizations to create fundraising campaigns and find new donors.", ["CakePHP"])
-    }]
+    // All the data from configuration, split into pages
+    allData: {page: number, work: WProject[], personal: WProject[], other: WProject[]}[] = [];
+
+    // The three kinds of projects we have
+    workProjects:     WProject[] = [];            // Main set of projects
+    personalProjects: WProject[] = [];            // Auxilary personal project, gets a header card
+    otherProjects:    WProject[] = [];            // Other projects, will get a similar header card
+
+    constructor(private configService: ConfigService){
+        var rawData = this.configService.getConfig('projects');
+        var listToWProjects = (list: any[]): WProject[] =>
+            _.map(list, (item) => ({
+                weight: item.weight,
+                project: new Project(
+                    item.title,
+                    item.short,
+                    item.techs
+                )
+            }))
+        this.allData = _.map(rawData, (item: any) => ({
+            page: item.page,
+            work: listToWProjects(item.work),
+            personal: listToWProjects(item.personal),
+            other: listToWProjects(item.other)
+        }))
+    }
+
+    ngOnInit() {
+        if (this.allData.length > 0) {
+            this.workProjects = this.allData[0].work;
+            this.personalProjects = this.allData[0].personal;
+            this.otherProjects = this.allData[0].other;
+        }
+    }
+
 
     showDetails(project: Project) {
         this.selectedProject = project;
