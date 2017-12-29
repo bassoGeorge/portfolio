@@ -1,12 +1,21 @@
 <span
     (click)="previous()"
     role="button" class="grid-nav-btn previous-page-btn">Prev</span>
-<div>
-    <span
-        *ngFor="let page of pages"
-        (click)="goToPageIndex(page)"
-        class="grid-nav-btn page-num-btn"
-        role="button">page {{page}}&nbsp;</span>
+<div class="page-num-btn-container">
+    <span class="page-num-separator bg-lighter"></span>
+    <ng-container *ngFor="let page of pages" >
+        <span
+            (click)="goToPageIndex(page)"
+            class="grid-nav-btn page-num-btn"
+            [ngClass]="{
+            'active bdr-primary bg-acc-primary': page == currentPage,
+            'bg-lighter bdr-empty': page != currentPage,
+            'first': page == 0,
+            'last' : page == pages.length - 1
+            }"
+            role="button">
+        </span>
+    </ng-container>
 </div>
 <span
     (click)="next()"
