@@ -1,20 +1,65 @@
 <div class="centered-container">
     <main>
         <h2>MY WORK</h2>
-        <section class="work-grid">
-            <project-card
-                *ngFor="let item of projects"
-                [project]="item.project"
-                [style.gridRowEnd]="'span '+item.weight"
-            ></project-card>
+        <!-- TODO: pagination -->
+        <div class="projects-container">
 
-            <div style="grid-row-end: span 2;">
+            <div class="work-grid-container"
+                [style.visibility]="detailView ? 'hidden': 'visible'">
+                <section class="work-grid">
+                    <project-card
+                        *ngFor="let item of workProjects"
+                        [project]="item.project"
+                        [style.gridRowEnd]="'span '+item.weight"
+                        (click)="showDetails(item.project)"
+                    ></project-card>
+
+                    <!-- PERSONAL PROJECTS -->
+                    <div
+                        *ngIf="personalProjects.length > 0"
+                        class="work-grid-separator bg-acc-primary fg-inverse"
+                        style="grid-row-end: span 2;">
+                        <h5>
+                            Internal Projects
+                        </h5>
+                    </div>
+
+                    <project-card
+                        *ngFor="let item of personalProjects"
+                        [project]="item.project"
+                        [style.gridRowEnd]="'span '+item.weight"
+                        (click)="showDetails(item.project)"
+                    ></project-card>
+
+                    <!-- OTHER PROJECTS -->
+                    <div
+                        *ngIf="otherProjects.length > 0"
+                        class="work-grid-separator bg-acc-primary fg-inverse"
+                        style="grid-row-end: span 2;">
+                        <h5>
+                            Other Projects
+                        </h5>
+                    </div>
+
+                    <project-card
+                        *ngFor="let item of otherProjects"
+                        [project]="item.project"
+                        [style.gridRowEnd]="'span '+item.weight"
+                        (click)="showDetails(item.project)"
+                    ></project-card>
+
+                </section>
+                <grid-navigation
+                    [pageCount] = "allData.length"
+                    (pageChange) = "goToPage($event)"
+                ></grid-navigation>
             </div>
 
-            <!--
-            <project-card style="grid-row-end: span 5;"></project-card>
-            <project-card style="grid-row-end: span 3;"></project-card>
-            -->
-        </section>
+            <project-details
+                *ngIf="detailView"
+                [project]="selectedProject"
+                (close)="closeDetails()"
+            ></project-details>
+        </div>
     </main>
 </div>

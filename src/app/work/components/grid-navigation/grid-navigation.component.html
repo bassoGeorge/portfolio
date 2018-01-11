@@ -1,0 +1,30 @@
+<span
+    (click)="previous()"
+    role="button"
+    class="grid-nav-btn previous-page-btn"
+    [class.invisible]="currentPage == 0"
+    [innerHTML]="assets.leftArrow"
+></span>
+<div class="page-num-btn-container">
+    <span class="page-num-separator bg-lighter"></span>
+    <ng-container *ngFor="let page of pages" >
+        <span
+            (click)="goToPageIndex(page)"
+            class="grid-nav-btn page-num-btn"
+            [ngClass]="{
+            'active bdr-primary bg-acc-primary': page == currentPage,
+            'bg-lighter bdr-empty': page != currentPage,
+            'first': page == 0,
+            'last' : page == pages.length - 1
+            }"
+            role="button">
+        </span>
+    </ng-container>
+</div>
+<span
+    (click)="next()"
+    role="button"
+    class="grid-nav-btn next-page-btn"
+    [class.invisible]="currentPage == pages.length - 1"
+    [innerHTML]="assets.rightArrow"
+></span>

@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MyWorkPage } from './pages/my-work.page'
 
-import { ProjectCard } from './components';
+import { ProjectCard, ProjectDetails, GridNavigation } from './components';
 
 const workRoutes: Routes = [
     { path: '', component: MyWorkPage }
@@ -20,7 +20,9 @@ const workRoutes: Routes = [
     ],
     declarations: [
         MyWorkPage,
-        ProjectCard
+        ProjectCard,
+        ProjectDetails,
+        GridNavigation
     ],
     exports: [
         MyWorkPage

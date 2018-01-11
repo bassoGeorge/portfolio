@@ -37,6 +37,9 @@ for name, color in $accent-colors
 .bdr-danger
   border-color: $danger-color
 
+.bdr-empty
+  border-color: transparent
+
 /* Now we set some very basic colors */
 body
   @extend .bg-primary;
@@ -79,3 +82,6 @@ textarea.ng-touched.ng-invalid
   svg
     .shadable-fill
       @extend .fill-acc-primary
+
+.work-grid-separator::after
+  @extend .bdr-acc-primary

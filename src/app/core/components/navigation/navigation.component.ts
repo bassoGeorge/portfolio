@@ -34,13 +34,9 @@ export class NavigationComponent {
 
     pages: NavInfo[] = [
         this.buildNav('home', "Home", "/home", require('./assets/home.svg')),
-
         this.buildNav('about', "About Me", "/about-me", require('./assets/about.svg')),
-
         this.buildNav('my-work', "My Work", "/my-work", require('./assets/work.svg')),
-
         this.buildNav('skills', "Skills", "/skills", require('./assets/skills.svg')),
-
         this.buildNav('contact-me', "Contact Me", "/contact-me", require('./assets/contact.svg')),
     ]
 
