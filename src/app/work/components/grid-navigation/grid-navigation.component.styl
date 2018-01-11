@@ -1,16 +1,25 @@
 :host
   display: flex
-  justify-content: space-between
+  justify-content: center
   align-items: center
 
 .grid-nav-btn
   cursor: pointer
+
+  &.previous-page-btn,
+  &.next-page-btn
+    height: 1.5em
+    &:hover
+      ::ng-deep svg
+        animation: pulse 500ms
 
 .page-num-btn-container
   display: flex
   align-items: center
   position: relative
   padding: 1px
+  margin-right: 2em
+  margin-left: 2em
 
   .page-num-separator
     position: absolute

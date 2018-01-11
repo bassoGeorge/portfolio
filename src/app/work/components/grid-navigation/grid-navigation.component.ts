@@ -2,6 +2,7 @@
 //                   The Navigation component for work grid                  //
 ///////////////////////////////////////////////////////////////////////////////
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import * as _ from 'underscore';
 
@@ -17,6 +18,17 @@ export class GridNavigation {
     @Output() pageChange = new EventEmitter();
 
     pages: number[];
+    assets: any = {
+        leftArrow: null,
+        rightArrow: null
+    };
+
+    constructor(
+        private ds: DomSanitizer
+    ) {
+        this.assets.leftArrow  = this.ds.bypassSecurityTrustHtml(require('./assets/grid-left-arrow.svg'));
+        this.assets.rightArrow = this.ds.bypassSecurityTrustHtml(require('./assets/grid-right-arrow.svg'));
+    }
 
     ngOnInit(){
         if (this.currentPage == undefined || this.currentPage == null) {
