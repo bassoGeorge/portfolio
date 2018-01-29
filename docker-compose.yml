@@ -20,6 +20,7 @@ services:
     restart: always
     volumes:
       - ./.data/api-storage:/var/www/html/storage
+      - ./config/directus_configuration.php:/var/www/api/configuration.php # not really working
     env_file:
       - ./config/api.env
     environment:
