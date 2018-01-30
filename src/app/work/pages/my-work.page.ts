@@ -4,6 +4,7 @@
 import { Component } from '@angular/core';
 import { Project } from '../models';
 import { ConfigService } from '../../core';
+import { WorkService } from '../work.service';
 
 import * as _ from 'underscore';
 
@@ -34,7 +35,7 @@ export class MyWorkPage {
     personalProjects: WProject[] = [];            // Auxilary personal project, gets a header card
     otherProjects:    WProject[] = [];            // Other projects, will get a similar header card
 
-    constructor(private configService: ConfigService){
+    constructor(private configService: ConfigService, private workApi: WorkService){
         var rawData = this.configService.getConfig('projects');
         var listToWProjects = (list: any[]): WProject[] =>
             _.map(list, (item) => ({
@@ -57,8 +58,19 @@ export class MyWorkPage {
         if (this.allData.length > 0) {
             this.goToPage(0);
         }
+        this.workApi.getPages().subscribe(pages => {
+            console.log("We got pages: ");
+            console.log(pages);
+        })
+        this.workApi.getProjectsForPage(1)
+            .reduce((acc, cur) => {
+                acc[cur.type].push(cur);
+                return acc;
+            }, {work: [], personal: [], other: []})
+            .subscribe(project => {
+                console.log(project);
+            })
     }
-
 
     showDetails(project: Project) {
         this.selectedProject = project;
