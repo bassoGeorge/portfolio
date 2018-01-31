@@ -16,6 +16,5 @@ export class ProjectCard {
     }
 
     select() {
-        console.log("Clicked on project: "+this.project.title);
     }
 }

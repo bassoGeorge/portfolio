@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from './core';
 
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
             { enableTracing: false } // only for debugging purposes
         ),
         BrowserModule,
+        HttpClientModule,
         CoreModule
     ],
     declarations: [
