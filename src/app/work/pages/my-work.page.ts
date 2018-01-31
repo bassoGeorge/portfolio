@@ -5,13 +5,22 @@ import { Component } from '@angular/core';
 import { Project } from '../models';
 import { ConfigService } from '../../core';
 import { WorkService } from '../work.service';
+import { Observable } from 'rxjs/Rx';
 
 import * as _ from 'underscore';
 
 /* Handling projects with weights */
+// Deprecated
 interface WProject {
     weight: number,
     project: Project
+}
+
+interface WorkPage {
+    page: number,
+    work: Project[],
+    personal: Project[],
+    other: Project[]
 }
 
 @Component({
@@ -27,49 +36,25 @@ export class MyWorkPage {
     // The current selected project for details view
     selectedProject: Project;
 
-    // All the data from configuration, split into pages
-    allData: {page: number, work: WProject[], personal: WProject[], other: WProject[]}[] = [];
+    // Current grid page
+    currentPage: WorkPage = {page: 0, work: [], personal: [], other: []};
 
-    // The three kinds of projects we have
-    workProjects:     WProject[] = [];            // Main set of projects
-    personalProjects: WProject[] = [];            // Auxilary personal project, gets a header card
-    otherProjects:    WProject[] = [];            // Other projects, will get a similar header card
+    // All grid pages we received from api yet
+    allData: WorkPage[] = [];
 
-    constructor(private configService: ConfigService, private workApi: WorkService){
-        var rawData = this.configService.getConfig('projects');
-        var listToWProjects = (list: any[]): WProject[] =>
-            _.map(list, (item) => ({
-                weight: item.weight,
-                project: new Project(
-                    item.title,
-                    item.short,
-                    item.techs
-                )
-            }))
-        this.allData = _.map(rawData, (item: any) => ({
-            page: item.page,
-            work: listToWProjects(item.work),
-            personal: listToWProjects(item.personal),
-            other: listToWProjects(item.other)
-        }))
-    }
+    // An array of page ids available to us from api
+    // We will not use the ids within this array for handling UI, instead, we will simply use
+    // indexes of this pages array as page numbers from this component down the tree.
+    // Only when requesting from API will we take into consideration the page id from inside array.
+    pages: number[] = [];
 
-    ngOnInit() {
-        if (this.allData.length > 0) {
+    constructor(private workApi: WorkService) {
+
+        // We setup the total number of pages
+        workApi.getPages().subscribe(pages => {
+            this.pages = _.map(pages, page => page['id']);
             this.goToPage(0);
-        }
-        this.workApi.getPages().subscribe(pages => {
-            console.log("We got pages: ");
-            console.log(pages);
         })
-        this.workApi.getProjectsForPage(1)
-            .reduce((acc, cur) => {
-                acc[cur.type].push(cur);
-                return acc;
-            }, {work: [], personal: [], other: []})
-            .subscribe(project => {
-                console.log(project);
-            })
     }
 
     showDetails(project: Project) {
@@ -82,9 +67,20 @@ export class MyWorkPage {
         this.selectedProject = null;
     }
 
-    goToPage(pageNum: number) {
-        this.workProjects = this.allData[pageNum].work;
-        this.personalProjects = this.allData[pageNum].personal;
-        this.otherProjects = this.allData[pageNum].other;
+    retrievePageFromApi(pageIdx: number) {
+        let pageNum = this.pages[pageIdx];
+        return this.workApi.getProjectsForPage(pageNum)
+            .reduce((acc, cur) => {
+                acc[cur.type].push(cur);
+                return acc;
+            }, {page: pageNum, work: [], personal: [], other: []});
+    }
+
+    goToPage(pageIdx: number) {
+        let obs = (this.allData[pageIdx]) ? Observable.of(this.allData[pageIdx]) : this.retrievePageFromApi(pageIdx);
+        obs.subscribe(page => {
+            this.allData[pageIdx] = page;
+            this.currentPage = page;
+        });
     }
 }

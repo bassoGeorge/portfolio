@@ -12,12 +12,19 @@ import * as _ from 'underscore';
     styleUrls: ['./grid-navigation.component.styl']
 })
 export class GridNavigation {
-    @Input() pageCount: number;
+    pages: number[] // We use this to iterrate in ui
+
+    @Input() set pageCount(value: number) {
+        this.pages = _.range(value);
+    }
+    get pageCount(): number {
+        return this.pages.length;
+    }
+
     @Input() currentPage?: number; // index
 
     @Output() pageChange = new EventEmitter();
 
-    pages: number[];
     assets: any = {
         leftArrow: null,
         rightArrow: null
@@ -34,7 +41,6 @@ export class GridNavigation {
         if (this.currentPage == undefined || this.currentPage == null) {
             this.currentPage = 0
         }
-        this.pages = _.range(this.pageCount);
     }
 
     notify() {
