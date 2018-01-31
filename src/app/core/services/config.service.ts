@@ -18,7 +18,8 @@ export class ConfigService {
         // explicit everytime or else we won't be able to load the json
         this.config = _.extend(
             this.config,
-            require("../../../config/projects.json")
+            {},
+            // require("../../../config/projects.json")            // Add additional configuration jsons
         )
     }
 
