@@ -59,6 +59,16 @@ export class MyWorkPage {
 
     showDetails(project: Project) {
         this.selectedProject = project;
+
+        // Checking if we have previously loaded this project's details
+        // if not, we request them now and load
+        // Since we are sharing class objects, this will be retrieved from
+        // the api once
+        if (project.fullDescription == undefined) {
+            this.workApi.getProjectDetails(project).subscribe(desc => {
+                project.fullDescription = desc;
+            })
+        }
         this.detailView = true;
     }
 

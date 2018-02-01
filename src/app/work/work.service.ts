@@ -32,7 +32,7 @@ export class WorkService {
             params: new HttpParams()
                 .set('depth', '1')
                 .set('columns', [
-                    'status', 'name', 'type',
+                    'id', 'status', 'name', 'type',
                     'summary', 'weight',
                     'skills.name'
                 ].join(','))
@@ -43,6 +43,7 @@ export class WorkService {
             .map(project => {
                 let techs = _.pluck(project["skills"]["data"], 'name');
                 return new Project(
+                    parseInt(project['id']),
                     project['name'],
                     project['summary'],
                     techs,
@@ -53,5 +54,14 @@ export class WorkService {
         // TODO: map till we get the structure we want
         // Infact, let's not devide it here
         ;
+    }
+
+    getProjectDetails(project: Project) {
+        return this.http.get("/tables/projects/rows/"+project.id, {
+            params: new HttpParams()
+                .set('depth', '0')
+                .set('columns', 'description')
+        })
+            .map(json => json["data"]['description'])
     }
 }
