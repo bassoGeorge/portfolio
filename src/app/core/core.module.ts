@@ -5,13 +5,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { HomePage } from './pages/home/home.page';
 import { AboutMePage } from './pages/about-me/about-me.page';
 import { coreRoutes } from './core.routes';
 import { ThemeService, ConfigService } from './services';
-import { DataApiInterceptor } from './interceptors';
+import { CoreHttpInterceptors } from './interceptors';
 
 import {
     NavigationComponent,
@@ -44,11 +43,7 @@ declare global {
     providers: [
         ThemeService,
         ConfigService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: DataApiInterceptor,
-            multi: true
-        }
+        ...CoreHttpInterceptors
     ],
     exports: [
         NavigationComponent,
