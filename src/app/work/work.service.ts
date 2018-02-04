@@ -20,7 +20,7 @@ export class WorkService {
     ){}
 
     getPages() {
-        return this.http.get("/tables/work_pages/rows", {
+        return this.http.get("/api/tables/work_pages/rows", {
             params: new HttpParams()
                 .set('depth', '0')
                 .set('columns', 'id')
@@ -28,7 +28,7 @@ export class WorkService {
     }
 
     getProjectsForPage(num: number) {
-        return this.http.get("/tables/projects/rows", {
+        return this.http.get("/api/tables/projects/rows", {
             params: new HttpParams()
                 .set('depth', '1')
                 .set('columns', [
@@ -51,13 +51,11 @@ export class WorkService {
                     project["weight"]
                 );
             })
-        // TODO: map till we get the structure we want
-        // Infact, let's not devide it here
         ;
     }
 
     getProjectDetails(project: Project) {
-        return this.http.get("/tables/projects/rows/"+project.id, {
+        return this.http.get("/api/tables/projects/rows/"+project.id, {
             params: new HttpParams()
                 .set('depth', '0')
                 .set('columns', 'description')
