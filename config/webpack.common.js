@@ -4,10 +4,14 @@
 
 var helpers = require('./helpers');
 var webpack = require('webpack');
+var path = require('path');
 
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
+
+const appPath = './src';
+
 
 module.exports = {
     // Entry points to build bundles from
@@ -22,7 +26,10 @@ module.exports = {
 
     // Resolution method for imports without extensions.
     resolve: {
-        extensions: ['.ts', '.js']
+        extensions: ['.ts', '.js', '.styl'],
+        alias: {
+            styles: path.resolve(appPath, 'assets', 'css')
+        }
     },
 
     module: {
