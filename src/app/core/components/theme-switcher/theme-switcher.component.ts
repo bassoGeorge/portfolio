@@ -7,7 +7,7 @@ import { ThemeService } from '../../services';
 
 @Component({
     selector: 'theme-switcher',
-    template: `<button (click)=switch()>Switch Theme</button>`
+    template: `<button class="button" (click)=switch()>Switch Theme</button>`
 })
 export class ThemeSwitcherComponent {
     constructor(private themeService: ThemeService) {}

@@ -21,7 +21,15 @@ export class NavigationComponent {
     constructor(
         private router: Router,
         private ds: DomSanitizer
-    ) {}
+    ) {
+        this.otherIcons = {
+            menu_open: this.ds.bypassSecurityTrustHtml(require('./assets/menu.svg')),
+            menu_close: this.ds.bypassSecurityTrustHtml(require('./assets/close.svg')),
+        }
+    }
+
+    otherIcons: {[key: string]: SafeHtml}
+    mShowQuickLinks = false;
 
     buildNav(id: string, name: string, target: string, img: string): NavInfo {
         return {
@@ -44,4 +52,6 @@ export class NavigationComponent {
         this.buildNav('github', "GitHub", 'https://github.com/bassoGeorge', require('./assets/github.svg')),
         this.buildNav('resume', "Resume", '#', require('./assets/resume.svg'))
     ];
+
+    toggleQuickLinks = () => this.mShowQuickLinks = !this.mShowQuickLinks;
 }

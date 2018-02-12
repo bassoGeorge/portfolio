@@ -1,31 +1,56 @@
+@require "~styles/_utils"
 nav
   position: fixed
   bottom: 0
   left: 0
   width: 100%
-  height: 10rem
-  padding-left: 5rem
-  padding-right: 5rem
+  height: 5rem
+  padding: 0 1rem
   display: flex
   justify-content: space-between
   align-items: center
 
+  .icon
+    height: 1.2em
+
+  +on-tablet()
+    .icon
+      height: 1.4em
+
   a
     display: flex
     align-items: center
-    font-size: 2.2rem
+    font-size: 1.5rem
     text-decoration: none
     span
       white-space: nowrap
       margin-left: 0.6em
       position: relative
 
+
+    +on-tablet()
+      font-size: 2.2rem
+
   a:not(.page-link-active):hover
     ::ng-deep svg
-      animation: pulse 500ms;
+      animation: pulse 500ms
+
+  +on-tablet()
+    height: 10rem
+
+  +on-desktop()
+    padding: 0 5rem
+
 
 
 .navigation--pages
+
+  &.navigation--quick-links-toggle-on
+    display: none
+  +on-desktop()
+    &.navigation--quick-links-toggle-on
+      display: block
+
   li
     margin-left: 0
     padding-top: 0.4rem
@@ -36,17 +61,22 @@ nav
     margin-left: 0
 
   a
-    margin-left: 3rem
+    margin-left: 1.5rem
     position: relative
-    width: 1.8em
     transition: all 350ms ease-in-out
 
-    .icon
-      height: 1.4em
+    span
+      display: none
 
-  a.page-link-active
-    width: 5em
+    +on-desktop()
+      margin-left: 3rem
+      width: 1.8em
 
+      span
+        display: initial
+
+      &.page-link-active
+        width: 5em
 
 #page-nav-link-my-work.page-link-active
   width: 6.5em
@@ -55,6 +85,10 @@ nav
   width: 8em
 
 .navigation--quick-links
+  display: none
+  &.navigation--quick-links-toggle-on
+    display: block
+
   li
     margin-left: 0
     padding: 0 1em
@@ -68,7 +102,7 @@ nav
     background-color: white
     position: absolute
     right: 0
-    top: ((100% - $height) / 2);
+    top: ((100% - $height) / 2)
   li:first-child
     padding-left: 0
   li:last-child
@@ -79,6 +113,15 @@ nav
   a
     color: white // Moving away from convention here
     .icon
-      height: 1.4em
       display: flex
       justify-content: center
+
+  +on-desktop()
+    display: block
+
+.navigation--quick-links-toggle-btn
+  .icon
+    height: 1.1em
+
+  +on-desktop()
+    display: none

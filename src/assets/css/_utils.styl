@@ -1,0 +1,38 @@
+/***************************************************************************/
+/*                             Some basic Utils                            */
+/* We only add mixins and functions here                                   */
+/***************************************************************************/
+
+// We define some min widths for media queries
+  // Mobile: 0
+// Phablet: 400px
+// Tablet: 550px
+// Desktop: 750px
+// DesktopHD: 1000px
+// Above and beyond: 1200px
+
+
+respond-to(n)
+  @media screen and (min-width: n)
+    {block}
+
+// Because for some damn reason, we can't pass around blocks
+on-phablet()
+  @media screen and (min-width: 400px)
+    {block}
+
+on-tablet()
+  @media screen and (min-width: 550px)
+    {block}
+
+on-desktop()
+  @media screen and (min-width: 750px)
+    {block}
+
+on-desktopHd()
+  @media screen and (min-width: 1000px)
+    {block}
+
+on-desktopUHd()
+  @media screen and (min-width: 1200px)
+    {block}
