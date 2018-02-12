@@ -11,7 +11,7 @@ nav
   align-items: center
 
   .icon
-    height: 1em
+    height: 1.2em
 
   +on-tablet()
     .icon
@@ -47,7 +47,7 @@ nav
 
   &.navigation--quick-links-toggle-on
     display: none
-  +on-tablet()
+  +on-desktop()
     &.navigation--quick-links-toggle-on
       display: block
 
@@ -61,7 +61,7 @@ nav
     margin-left: 0
 
   a
-    margin-left: 1.2rem
+    margin-left: 1.5rem
     position: relative
     transition: all 350ms ease-in-out
 
@@ -116,9 +116,12 @@ nav
       display: flex
       justify-content: center
 
-  +on-tablet()
+  +on-desktop()
     display: block
 
-+on-tablet()
-  .navigation--quick-links-toggle-btn
+.navigation--quick-links-toggle-btn
+  .icon
+    height: 1.1em
+
+  +on-desktop()
     display: none

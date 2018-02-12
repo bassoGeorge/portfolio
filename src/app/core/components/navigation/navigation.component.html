@@ -27,7 +27,16 @@
     <button
         class="navigation--quick-links-toggle-btn"
         (click)="toggleQuickLinks()">
-        =
+
+        <div class="icon svg-color-primary"
+            *ngIf="!mShowQuickLinks"
+            [innerHTML]="otherIcons.menu_open">
+        </div>
+        <div class="icon svg-color-primary"
+            *ngIf="mShowQuickLinks"
+            [innerHTML]="otherIcons.menu_close">
+        </div>
+
     </button>
 
 </nav>

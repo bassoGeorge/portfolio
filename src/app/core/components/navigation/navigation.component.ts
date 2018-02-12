@@ -21,8 +21,14 @@ export class NavigationComponent {
     constructor(
         private router: Router,
         private ds: DomSanitizer
-    ) {}
+    ) {
+        this.otherIcons = {
+            menu_open: this.ds.bypassSecurityTrustHtml(require('./assets/menu.svg')),
+            menu_close: this.ds.bypassSecurityTrustHtml(require('./assets/close.svg')),
+        }
+    }
 
+    otherIcons: {[key: string]: SafeHtml}
     mShowQuickLinks = false;
 
     buildNav(id: string, name: string, target: string, img: string): NavInfo {

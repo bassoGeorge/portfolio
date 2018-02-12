@@ -15,6 +15,9 @@ for name, color in $fg-colors
   .bdr-{name}
     border-color: color
 
+  .fill-{name}
+    fill: color
+
 for name, color in $accent-colors
   .bg-acc-{name}
     background-color: color
@@ -78,10 +81,17 @@ input.ng-touched.ng-invalid,
 textarea.ng-touched.ng-invalid
   @extend .bdr-danger
 
+.work-grid-separator::after
+  @extend .bdr-acc-primary
+
 .svg-active-acc
   svg
     .shadable-fill
       @extend .fill-acc-primary
 
-.work-grid-separator::after
-  @extend .bdr-acc-primary
+.svg-color-primary
+  svg .shadable-fill
+    fill: lightness($fg-colors.primary, 70%)
+  svg:hover, svg:active
+    .shadable-fill
+      @extend .fill-primary
