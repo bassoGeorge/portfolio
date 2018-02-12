@@ -23,6 +23,8 @@ export class NavigationComponent {
         private ds: DomSanitizer
     ) {}
 
+    mShowQuickLinks = false;
+
     buildNav(id: string, name: string, target: string, img: string): NavInfo {
         return {
             id: id,
@@ -44,4 +46,6 @@ export class NavigationComponent {
         this.buildNav('github', "GitHub", 'https://github.com/bassoGeorge', require('./assets/github.svg')),
         this.buildNav('resume', "Resume", '#', require('./assets/resume.svg'))
     ];
+
+    toggleQuickLinks = () => this.mShowQuickLinks = !this.mShowQuickLinks;
 }

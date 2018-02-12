@@ -1,5 +1,7 @@
 <nav class="bg-light">
-    <ul class="navigation--pages horizontal-flat-list">
+    <ul class="navigation--pages horizontal-flat-list"
+        [class.navigation--quick-links-toggle-on]="mShowQuickLinks"
+    >
         <li *ngFor="let page of pages">
             <a id="page-nav-link-{{page.id}}" routerLink="{{page.target}}" routerLinkActive="page-link-active svg-active-acc">
                 <div class="icon" [innerHTML]="page.img">
@@ -10,7 +12,9 @@
         </li>
     </ul>
 
-    <ul class="navigation--quick-links horizontal-flat-list">
+    <ul class="navigation--quick-links horizontal-flat-list"
+        [class.navigation--quick-links-toggle-on]="mShowQuickLinks"
+    >
         <li *ngFor="let link of quickLinks">
             <a target="_blank" [href]="link.target">
                 <div class="icon" [innerHTML]="link.img">
@@ -19,5 +23,11 @@
             </a>
         </li>
     </ul>
+
+    <button
+        class="navigation--quick-links-toggle-btn"
+        (click)="toggleQuickLinks()">
+        =
+    </button>
 
 </nav>
