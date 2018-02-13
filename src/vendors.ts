@@ -14,3 +14,7 @@ import 'underscore';
 
 // Animate.css
 import 'animate.css/animate.css';
+
+// Remove focus outline for mouse users only, and leave them be for
+// keyboard users.
+import './assets/scripts/outline';
