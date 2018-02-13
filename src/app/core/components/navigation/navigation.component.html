@@ -1,8 +1,10 @@
-<nav class="bg-light">
-    <ul class="navigation--pages horizontal-flat-list"
-        [class.navigation--quick-links-toggle-on]="mShowQuickLinks"
-    >
-        <li *ngFor="let page of pages">
+<nav class="bg-light"
+    [class.navigation--quick-links-toggle-on]="mShowQuickLinks" >
+
+    <!-- Main page navigation -->
+    <ul class="navigation--pages horizontal-flat-list" >
+        <li *ngFor="let page of pages"
+            class="navigation--pages--item" >
             <a id="page-nav-link-{{page.id}}" routerLink="{{page.target}}" routerLinkActive="page-link-active svg-active-acc">
                 <div class="icon" [innerHTML]="page.img">
                 </div>
@@ -10,11 +12,30 @@
                 <span>{{page.name}}</span>
             </a>
         </li>
+
+        <li
+            class="navigation--quick-links-toggle-btn"
+        >
+            <button
+                (click)="toggleQuickLinks()">
+
+                <div class="icon svg-color-primary"
+                    *ngIf="!mShowQuickLinks"
+                    [innerHTML]="otherIcons.menu_open">
+                </div>
+                <div class="icon svg-color-primary"
+                    *ngIf="mShowQuickLinks"
+                    [innerHTML]="otherIcons.menu_close">
+                </div>
+
+            </button>
+        </li>
+
+
     </ul>
 
-    <ul class="navigation--quick-links horizontal-flat-list"
-        [class.navigation--quick-links-toggle-on]="mShowQuickLinks"
-    >
+    <!-- Quick links -->
+    <ul class="navigation--quick-links horizontal-flat-list" >
         <li *ngFor="let link of quickLinks">
             <a target="_blank" [href]="link.target">
                 <div class="icon" [innerHTML]="link.img">
@@ -24,19 +45,5 @@
         </li>
     </ul>
 
-    <button
-        class="navigation--quick-links-toggle-btn"
-        (click)="toggleQuickLinks()">
-
-        <div class="icon svg-color-primary"
-            *ngIf="!mShowQuickLinks"
-            [innerHTML]="otherIcons.menu_open">
-        </div>
-        <div class="icon svg-color-primary"
-            *ngIf="mShowQuickLinks"
-            [innerHTML]="otherIcons.menu_close">
-        </div>
-
-    </button>
 
 </nav>
