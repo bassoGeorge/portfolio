@@ -3,6 +3,7 @@
 /***************************************************************************/
 
 @require "./_fonts.css"
+@require "./_utils"
 
 *
   box-sizing: border-box;
@@ -15,7 +16,9 @@ body
   font-size: 1.6rem
   height: 100%
   padding: 1rem
-  padding-bottom: calc(10rem + 1rem) // On account of the navigation item
+  padding-bottom: "calc(%s + 1rem)" % $navHeight-mobile // On account of the navigation item
+  +on-tablet()
+    padding-bottom: "calc(%s + 1rem)" % $navHeight-tablet
 
 @require "./_typography"
 @require "./_forms"
@@ -53,9 +56,16 @@ ul.horizontal-flat-list
   height: 100%
   width: 100%
   display: flex
-  justify-content: stretch
-  align-items: center
-  padding: 0 120px
+  padding: 0 20px
+  overflow-x: auto
+
+  // This is to avoid the missing tops & bottoms when the flex item is larger
+  // on using justify-content + align-items
+  & > *
+    margin: auto
+
+  +on-desktop()
+    padding: 0 120px
 
 .at-ends-container
   display: flex
