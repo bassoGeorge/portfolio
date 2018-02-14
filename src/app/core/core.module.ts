@@ -9,8 +9,12 @@ import { RouterModule } from '@angular/router';
 import { HomePage } from './pages/home/home.page';
 import { AboutMePage } from './pages/about-me/about-me.page';
 import { coreRoutes } from './core.routes';
-import { ThemeService, ConfigService } from './services';
 import { CoreHttpInterceptors } from './interceptors';
+import {
+    ThemeService,
+    ConfigService,
+    PageService
+} from './services';
 
 import {
     NavigationComponent,
@@ -43,6 +47,7 @@ declare global {
     providers: [
         ThemeService,
         ConfigService,
+        PageService,
         ...CoreHttpInterceptors
     ],
     exports: [
