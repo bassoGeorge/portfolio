@@ -28,8 +28,17 @@ main
 
   +till-desktop()
     for num in (1..40)
+      &.work-grid--tablet-rows-{num}
+        grid-template-rows: repeat(num, 40px)
+
+  +till-tablet()
+    for num in (1..40)
       &.work-grid--mobile-rows-{num}
         grid-template-rows: repeat(num, 40px)
+
+
+  +on-tablet()
+    grid-template-columns: repeat(2, 1fr)
 
   +on-desktop()
     height: calc(100% - 70px)
