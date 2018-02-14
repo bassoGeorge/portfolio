@@ -1,9 +1,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 //                             My work main page                             //
 ///////////////////////////////////////////////////////////////////////////////
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { Project } from '../models';
-import { ConfigService } from '../../core';
+import { ConfigService, PageService } from '../../core';
 import { WorkService } from '../work.service';
 import { Observable } from 'rxjs/Rx';
 
@@ -49,7 +49,11 @@ export class MyWorkPage {
     // Only when requesting from API will we take into consideration the page id from inside array.
     pages: number[] = [];
 
-    constructor(private workApi: WorkService) {
+    constructor(
+        private workApi: WorkService,
+        private elem: ElementRef,
+        private pageService: PageService
+    ) {
 
         // We setup the total number of pages
         workApi.getPages().subscribe(pages => {
@@ -104,6 +108,7 @@ export class MyWorkPage {
         obs.subscribe(page => {
             this.allData[pageIdx] = page;
             this.currentPage = page;
+            this.pageService.scrollPageTo(this.elem, 0);
         });
     }
 }

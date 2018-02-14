@@ -2,4 +2,4 @@
 //            Bunch of Exports for typescript from the core module           //
 ///////////////////////////////////////////////////////////////////////////////
 export { CoreModule } from './core.module';
-export { ThemeService, ConfigService } from './services';
+export { ThemeService, ConfigService, PageService } from './services';
