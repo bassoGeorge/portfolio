@@ -18,6 +18,7 @@ interface WProject {
 
 interface WorkPage {
     page: number,
+    totalWeight: number,
     work: Project[],
     personal: Project[],
     other: Project[]
@@ -37,7 +38,7 @@ export class MyWorkPage {
     selectedProject: Project;
 
     // Current grid page
-    currentPage: WorkPage = {page: 0, work: [], personal: [], other: []};
+    currentPage: WorkPage = {page: 0, totalWeight: 0, work: [], personal: [], other: []};
 
     // All grid pages we received from api yet
     allData: WorkPage[] = [];
@@ -82,8 +83,20 @@ export class MyWorkPage {
         return this.workApi.getProjectsForPage(pageNum)
             .reduce((acc, cur) => {
                 acc[cur.type].push(cur);
+                acc.totalWeight += cur.weight;
                 return acc;
-            }, {page: pageNum, work: [], personal: [], other: []});
+            }, {page: pageNum, totalWeight: 0, work: [], personal: [], other: []})
+            .map(workPage => {
+                // For each personal/other we have a header wich takes up 2 grid places
+                if (workPage.personal.length > 0) {
+                    workPage.totalWeight += 2;
+                }
+                if (workPage.other.length > 0) {
+                    workPage.totalWeight += 2;
+                }
+                return workPage;
+            })
+        ;
     }
 
     goToPage(pageIdx: number) {

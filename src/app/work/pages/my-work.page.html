@@ -6,7 +6,7 @@
 
             <div class="work-grid-container"
                 [style.visibility]="detailView ? 'hidden': 'visible'">
-                <section class="work-grid">
+                <section class="work-grid work-grid--mobile-rows-{{currentPage.totalWeight}}">
                     <project-card
                         *ngFor="let project of currentPage.work"
                         [project]="project"
