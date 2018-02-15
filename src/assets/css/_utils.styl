@@ -3,53 +3,54 @@
 /* We only add mixins and functions here                                   */
 /***************************************************************************/
 
-// We define some min widths for media queries
-  // Mobile: 0
-// Phablet: 400px
-// Tablet: 550px
-// Desktop: 750px
-// DesktopHD: 1000px
-// Above and beyond: 1200px
-
-
-respond-to(n)
-  @media screen and (min-width: n)
-    {block}
-
-// Because for some damn reason, we can't pass around blocks
-on-phablet()
-  @media screen and (min-width: 400px)
-    {block}
-
-on-tablet()
-  @media screen and (min-width: 550px)
-    {block}
-
-on-desktop()
-  @media screen and (min-width: 750px)
-    {block}
-
-on-desktopHd()
-  @media screen and (min-width: 1000px)
-    {block}
-
-on-desktopUHd()
-  @media screen and (min-width: 1200px)
-    {block}
-
-
-// Some reverse media queries
-till-desktop()
-  @media screen and (max-width: 749px)
-    {block}
-
-till-tablet()
-  @media screen and (max-width: 549px)
-    {block}
-
-
-// some sitewide fixed layout variables
-
+// some site-wide fixed layout variables
 
 $navHeight-mobile = 5rem
 $navHeight-tablet = 10rem
+
+
+// Media Queries
+$breakpoints = {
+   tablet-portrait: 600px
+   tablet-landscape: 900px
+   desktop: 1200px
+   big-desktop: 1800px
+}
+
+// not working, these don't follow html 62.5%
+$breakpoints_em = {
+   tablet-portrait: 60em
+   tablet-landscape: 90em
+   desktop: 120em
+   big-desktop: 180em
+}
+
+on-mobile-only()
+  @media screen and (max-width: $breakpoints.tablet-portrait - 1px)
+    {block}
+
+on-tablet-portrait-up()
+  @media screen and (min-width: $breakpoints.tablet-portrait)
+    {block}
+
+// Same as above
+on-tablet-up()
+  @media screen and (min-width: $breakpoints.tablet-portrait)
+    {block}
+
+on-tablet-landscape-up()
+  @media screen and (min-width: $breakpoints.tablet-landscape)
+    {block}
+
+on-desktop-up()
+  @media screen and (min-width: $breakpoints.desktop)
+    {block}
+
+on-big-desktop-up()
+  @media screen and (min-width: $breakpoints.big-desktop)
+    {block}
+
+// Misc queries
+on-tablet-only()
+  @media screen and (min-width: $breakpoints.tablet-portrait) and (max-width: $breakpoints.desktop - 1px)
+    {block}

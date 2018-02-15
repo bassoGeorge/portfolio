@@ -13,7 +13,7 @@ nav
   .icon
     height: 1.2em
 
-  +on-tablet()
+  +on-tablet-up()
     .icon
       height: 1.4em
 
@@ -28,17 +28,17 @@ nav
       position: relative
 
 
-    +on-tablet()
+    +on-tablet-up()
       font-size: 2.2rem
 
   a:not(.page-link-active):hover
     ::ng-deep svg
       animation: pulse 500ms
 
-  +on-tablet()
+  +on-tablet-up()
     height: $navHeight-tablet
 
-  +on-desktop()
+  +on-desktop-up()
     padding: 0 5rem
 
 
@@ -47,7 +47,7 @@ nav
   display: flex
   flex-grow: 1
   justify-content: space-between
-  +on-desktop()
+  +on-desktop-up()
     display: initial
 
   li
@@ -66,7 +66,7 @@ nav
       span
         display: none
 
-      +on-desktop()
+      +on-desktop-up()
         margin-left: 3rem
         width: 1.8em
 
@@ -76,7 +76,7 @@ nav
         &.page-link-active
           width: 5em
 
-    +on-desktop()
+    +on-desktop-up()
       padding-top: 0.4rem
       padding-bottom: 0.4rem
       #page-nav-link-my-work.page-link-active
@@ -88,7 +88,7 @@ nav
 // Quick Links list
 .navigation--quick-links
   display: none
-  +on-desktop()
+  +on-desktop-up()
     display: block
 
   li
@@ -126,7 +126,7 @@ nav
     flex-grow: 0
     li.navigation--pages--item
       display: none
-      +on-desktop()
+      +on-desktop-up()
         display: initial
 
   .navigation--quick-links
@@ -134,6 +134,8 @@ nav
 
 
 .navigation--quick-links-toggle-btn
+  display: flex
+  align-items: center
 
   button
     padding: 0
@@ -141,5 +143,5 @@ nav
   .icon
     height: 0.85em
 
-  +on-desktop()
+  +on-desktop-up()
     display: none
