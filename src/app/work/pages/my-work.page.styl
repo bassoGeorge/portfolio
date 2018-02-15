@@ -23,24 +23,27 @@ main
   grid-template-columns: 1fr
   margin-bottom: 30px
 
+  $fixed-row-height = 30px
+
   // This will be flexible
-  grid-template-rows: repeat(40, 40px)
+  grid-template-rows: repeat(40, $fixed-row-height)
 
-  +till-desktop()
-    for num in (1..40)
-      &.work-grid--tablet-rows-{num}
-        grid-template-rows: repeat(num, 40px)
-
-  +till-tablet()
+  +on-mobile-only()
     for num in (1..40)
       &.work-grid--mobile-rows-{num}
-        grid-template-rows: repeat(num, 40px)
+        grid-template-rows: repeat(num, $fixed-row-height)
 
 
-  +on-tablet()
+  +on-tablet-only()
+    for num in (1..40)
+      &.work-grid--tablet-rows-{num}
+        grid-template-rows: repeat(num, $fixed-row-height)
+
+
+  +on-tablet-up()
     grid-template-columns: repeat(2, 1fr)
 
-  +on-desktop()
+  +on-desktop-up()
     height: calc(100% - 70px)
     margin-bottom: 0
     grid-template-rows: repeat(10, 1fr)

@@ -17,7 +17,7 @@ body
   height: 100%
   padding: 1rem
   padding-bottom: "calc(%s + 1rem)" % $navHeight-mobile // On account of the navigation item
-  +on-tablet()
+  +on-tablet-up()
     padding-bottom: "calc(%s + 1rem)" % $navHeight-tablet
 
 @require "./_typography"
@@ -64,7 +64,7 @@ ul.horizontal-flat-list
   & > *
     margin: auto
 
-  +on-desktop()
+  +on-desktop-up()
     padding: 0 120px
 
 .at-ends-container
