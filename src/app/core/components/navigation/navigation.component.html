@@ -22,7 +22,11 @@
         >
             <button
                 (click)="toggleQuickLinks()"
-                class="svg-color-primary svg-color-primary-on-hover"
+                class="
+                svg-color-subdued
+                svg-color-primary-on-hover
+                svg-color-primary-on-active
+                "
             >
 
                 <div class="icon"
@@ -43,7 +47,15 @@
     <!-- Quick links -->
     <ul class="navigation--quick-links horizontal-flat-list" >
         <li *ngFor="let link of quickLinks">
-            <a target="_blank" [href]="link.target">
+            <a target="_blank" [href]="link.target"
+                class="
+                svg-color-subdued
+                svg-color-primary-on-hover
+                svg-color-primary-on-active
+                text-color-subdued
+                text-color-primary-on-hover
+                text-color-primary-on-active
+                ">
                 <div class="icon" [innerHTML]="link.img">
                 </div>
                 <span>{{link.name}}</span>
