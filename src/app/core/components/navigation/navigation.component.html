@@ -5,7 +5,11 @@
     <ul class="navigation--pages horizontal-flat-list" >
         <li *ngFor="let page of pages"
             class="navigation--pages--item" >
-            <a id="page-nav-link-{{page.id}}" routerLink="{{page.target}}" routerLinkActive="page-link-active svg-active-acc">
+            <a id="page-nav-link-{{page.id}}"
+                routerLink="{{page.target}}"
+                routerLinkActive="page-link-active svg-active-acc"
+                class="svg-color-primary-on-hover"
+            >
                 <div class="icon" [innerHTML]="page.img">
                 </div>
 
@@ -17,13 +21,15 @@
             class="navigation--quick-links-toggle-btn"
         >
             <button
-                (click)="toggleQuickLinks()">
+                (click)="toggleQuickLinks()"
+                class="svg-color-primary svg-color-primary-on-hover"
+            >
 
-                <div class="icon svg-color-primary"
+                <div class="icon"
                     *ngIf="!mShowQuickLinks"
                     [innerHTML]="otherIcons.menu_open">
                 </div>
-                <div class="icon svg-color-primary"
+                <div class="icon"
                     *ngIf="mShowQuickLinks"
                     [innerHTML]="otherIcons.menu_close">
                 </div>

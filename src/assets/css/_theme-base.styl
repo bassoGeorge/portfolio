@@ -84,14 +84,18 @@ textarea.ng-touched.ng-invalid
 .work-grid-separator::after
   @extend .bdr-acc-primary
 
-.svg-active-acc
-  svg
-    .shadable-fill
-      @extend .fill-acc-primary
+.svg-active-acc,
+.svg-active-acc:hover
+  svg .shadable-fill
+    @extend .fill-acc-primary
 
 .svg-color-primary
   svg .shadable-fill
-    fill: lightness($fg-colors.primary, 70%)
-  svg:hover, svg:active
-    .shadable-fill
-      @extend .fill-primary
+    fill: lightness($fg-colors.primary, 50%)
+
+  svg:active .shadable-fill
+    @extend .fill-primary
+
+.svg-color-primary-on-hover:hover
+  svg .shadable-fill
+    @extend .fill-primary
