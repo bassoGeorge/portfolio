@@ -4,6 +4,12 @@
 
 $danger-color = red
 
+// Don't change order, sheet cascade in work,
+// first bg style then fg color styles
+// then accent
+// Because we use @extend, further extends along stylesheet
+// will be merged to first occurance and then the positional cascade will
+// take affect accordingly
 for name, color in $bg-colors
   .bg-{name}
     background-color: color
@@ -84,19 +90,9 @@ textarea.ng-touched.ng-invalid
 .work-grid-separator::after
   @extend .bdr-acc-primary
 
-
-// Working with menu icons and links
-
-$subdued-color = lightness($fg-colors.primary, 50%);
-
-.svg-active-acc,
-.svg-active-acc:hover
+.svg-color-lighter
   svg .shadable-fill
-    @extend .fill-acc-primary
-
-.svg-color-subdued
-  svg .shadable-fill
-    fill: $subdued-color
+    @extend .fill-lighter
 
 .svg-color-primary-on-hover:hover,
 .svg-color-primary-on-hover:focus,
@@ -105,11 +101,16 @@ $subdued-color = lightness($fg-colors.primary, 50%);
   svg .shadable-fill
     @extend .fill-primary
 
-.text-color-subdued
-  color: $subdued-color
+// Should be after others as this has to have higher precedence
+.svg-active-acc,
+.svg-active-acc:hover,
+.svg-active-acc:active
+.svg-active-acc:focus
+  svg .shadable-fill
+    @extend .fill-acc-primary
 
-.text-color-primary-on-hover:hover,
-.text-color-primary-on-hover:focus,
-.text-color-primary-on-active:active
+.fg-primary-on-hover:hover,
+.fg-primary-on-hover:focus,
+.fg-primary-on-active:active
   outline: 0
   @extend .fg-primary

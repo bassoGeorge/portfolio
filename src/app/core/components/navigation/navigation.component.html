@@ -8,7 +8,10 @@
             <a id="page-nav-link-{{page.id}}"
                 routerLink="{{page.target}}"
                 routerLinkActive="page-link-active svg-active-acc"
-                class="svg-color-primary-on-hover"
+                class="
+                svg-color-lighter
+                svg-color-primary-on-hover
+                "
             >
                 <div class="icon" [innerHTML]="page.img">
                 </div>
@@ -23,7 +26,7 @@
             <button
                 (click)="toggleQuickLinks()"
                 class="
-                svg-color-subdued
+                svg-color-lighter
                 svg-color-primary-on-hover
                 svg-color-primary-on-active
                 "
@@ -49,12 +52,12 @@
         <li *ngFor="let link of quickLinks">
             <a target="_blank" [href]="link.target"
                 class="
-                svg-color-subdued
+                svg-color-lighter
                 svg-color-primary-on-hover
                 svg-color-primary-on-active
-                text-color-subdued
-                text-color-primary-on-hover
-                text-color-primary-on-active
+                fg-lighter
+                fg-primary-on-hover
+                fg-primary-on-active
                 ">
                 <div class="icon" [innerHTML]="link.img">
                 </div>
