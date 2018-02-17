@@ -1,23 +1,13 @@
 @require "~styles/_utils"
 .work-grid
   width: 100%
-  display: grid
-  grid-column-gap: 15px
-  grid-row-gap: 15px
-  grid-auto-flow: column
-
-  grid-template-columns: 1fr
   margin-bottom: 30px
-
   $fixed-row-height = 30px
 
-  // This will be flexible
-  grid-template-rows: repeat(40, $fixed-row-height)
-
   +on-mobile-only()
-    for num in (1..40)
-      &.work-grid--mobile-rows-{num}
-        grid-template-rows: repeat(num, $fixed-row-height)
+    & > *
+      margin-bottom: 15px
+      display: block
 
 
   +on-tablet-only()
@@ -25,8 +15,12 @@
       &.work-grid--tablet-rows-{num}
         grid-template-rows: repeat(num, $fixed-row-height)
 
-
   +on-tablet-up()
+    display: grid
+    grid-column-gap: 15px
+    grid-row-gap: 15px
+    grid-auto-flow: column
+
     grid-template-columns: repeat(2, 1fr)
 
   +on-desktop-up()
@@ -41,6 +35,9 @@
     align-items: center
     justify-content: center
     position: relative
+    padding: 1.5rem
+    +on-tablet-up()
+      padding: 0
     h4
       margin: 0
 
