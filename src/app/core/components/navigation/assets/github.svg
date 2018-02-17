@@ -10,7 +10,7 @@
         <g id="Download-My-Resume" transform="translate(0.000000, -2.000000)">
             <g id="github" transform="translate(0.000000, 2.000000)">
                 <g id="Group-3" transform="translate(0.000000, 0.264405)">
-                    <mask id="mask-2" fill="white">
+                    <mask id="mask-2" fill="white" class="shadable-fill">
                         <use xlink:href="#path-1"></use>
                     </mask>
                     <g id="Clip-2"></g>

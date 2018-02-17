@@ -31,9 +31,6 @@ nav
     +on-tablet-up()
       font-size: 2.2rem
 
-  a:not(.page-link-active):hover
-    ::ng-deep svg
-      animation: pulse 500ms
 
   +on-tablet-up()
     height: $navHeight-tablet
@@ -113,7 +110,7 @@ nav
     display: none
 
   a
-    color: white // Moving away from convention here
+    transition: color 300ms ease-in-out
     .icon
       display: flex
       justify-content: center
@@ -142,6 +139,10 @@ nav
 
   .icon
     height: 0.85em
+
+  +on-tablet-up()
+    .icon
+      height: 1.2em
 
   +on-desktop-up()
     display: none
