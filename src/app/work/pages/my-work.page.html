@@ -2,7 +2,7 @@
     <main>
         <h2>MY WORK</h2>
         <!-- TODO: pagination -->
-        <div class="projects-container">
+        <div class="projects-container" *ngIf="allData.length"> <!-- TODO: remove the *ngIf and add a decent loader, maybe inside work-grid -->
 
             <div class="work-grid-container"
                 [style.visibility]="detailView ? 'hidden': 'visible'">
@@ -16,6 +16,7 @@
                 <work-grid-paginator
                     [pageCount] = "pages.length"
                     (pageChange) = "goToPage($event)"
+                    [currentPage] = "currentPageNumber"
                 ></work-grid-paginator>
             </div>
 

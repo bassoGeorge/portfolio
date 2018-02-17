@@ -2,6 +2,9 @@
 //                             My work main page                             //
 ///////////////////////////////////////////////////////////////////////////////
 import { Component, ElementRef } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { Project, WorkGridPage } from '../models';
 import { ConfigService, PageService } from '../../core';
 import { WorkService } from '../work.service';
@@ -22,8 +25,10 @@ export class MyWorkPage {
     // The current selected project for details view
     selectedProject: Project;
 
-    // Current grid page
-    currentPage: WorkGridPage = {page: 0, totalWeight: 0, tabletRows: 0, work: [], personal: [], other: []};
+    // Current grid page as a getter
+    get currentPage(): WorkGridPage {
+        return this.allData[this.currentPageNumber];
+    }
 
     // All grid pages we received from api yet
     allData: WorkGridPage[] = [];
@@ -34,19 +39,82 @@ export class MyWorkPage {
     // Only when requesting from API will we take into consideration the page id from inside array.
     pages: number[] = [];
 
-    constructor(
-        private workApi: WorkService,
-        private elem: ElementRef,
-        private pageService: PageService
-    ) {
+    // Current page number (index you know)
+    currentPageNumber:number = null;
 
-        // We setup the total number of pages
-        workApi.getPages().subscribe(pages => {
-            this.pages = _.map(pages, page => page['id']);
-            this.goToPage(0);
-        })
+
+    // Need a loads of things
+    constructor(
+        private elem: ElementRef,
+        private route: ActivatedRoute,
+        private router: Router,
+        private location: Location,
+        private workApi: WorkService,
+        private pageService: PageService
+    ) {}
+
+    ngOnInit() {
+        // Getting initial page number from query params
+        let pageNo = this.route.queryParamMap
+            .map((params: ParamMap) => params.get('page') || 1)
+            .map(parseInt)
+        ;
+
+        // Getting list of page ids from api
+        let pages = this.workApi.getPages()
+            .map(pages => _.map(pages, page => page['id']));
+
+        // Making sure we do both together
+        Observable.zip(pageNo, pages)
+            .subscribe(data => {
+                this.pages = data[1];
+                this.goToPageId(data[0]);
+            })
     }
 
+    /* Navigating between pages
+       ====================================================== */
+    // Go to a given page by index
+    goToPage(pageIdx: number) {
+
+        let obs = (this.allData[pageIdx]) ?
+            Observable.of(pageIdx)
+            :
+            this.retrievePageFromApi(pageIdx)
+            .map(page => {
+                this.allData[pageIdx] = page;
+                return pageIdx;
+            });
+
+        obs.subscribe(pageIdx => {
+            this.currentPageNumber = pageIdx;
+
+            // Scroll to top
+            this.pageService.scrollPageTo(this.elem, 0);
+
+            // Update the URL, don't do a refresh
+            let newRoute = this.router
+                .createUrlTree([], {
+                    queryParams: {
+                        page: this.pages[pageIdx]
+                    },
+                    queryParamsHandling: "merge",
+                    relativeTo: this.route
+                })
+                .toString();
+            this.location.go(newRoute);
+        });
+    }
+
+    // Go to given page by api id
+    private goToPageId(pageId: number) {
+        let idx = this.pages.indexOf(pageId);
+        return this.goToPage(idx > -1 ? idx : 0);
+    }
+
+
+    /* Project details
+       ====================================================== */
     showDetails(project: Project) {
         this.selectedProject = project;
 
@@ -67,7 +135,12 @@ export class MyWorkPage {
         this.selectedProject = null;
     }
 
-    retrievePageFromApi(pageIdx: number) {
+
+    /* Other  helper functions
+       ====================================================== */
+
+    // Get a WorkGridPage from API
+    private retrievePageFromApi(pageIdx: number): Observable<WorkGridPage> {
         let pageNum = this.pages[pageIdx];
         return this.workApi.getProjectsForPage(pageNum)
             .reduce((acc, cur) => {
@@ -110,12 +183,4 @@ export class MyWorkPage {
         ;
     }
 
-    goToPage(pageIdx: number) {
-        let obs = (this.allData[pageIdx]) ? Observable.of(this.allData[pageIdx]) : this.retrievePageFromApi(pageIdx);
-        obs.subscribe(page => {
-            this.allData[pageIdx] = page;
-            this.currentPage = page;
-            this.pageService.scrollPageTo(this.elem, 0);
-        });
-    }
 }
