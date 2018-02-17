@@ -6,53 +6,13 @@
 
             <div class="work-grid-container"
                 [style.visibility]="detailView ? 'hidden': 'visible'">
-                <section class="
-                    work-grid
-                    work-grid--mobile-rows-{{currentPage.totalWeight}}
-                    work-grid--tablet-rows-{{currentPage.tabletRows}}
-                    ">
-                    <project-card
-                        *ngFor="let project of currentPage.work"
-                        [project]="project"
-                        [style.gridRowEnd]="'span '+project.weight"
-                        (click)="showDetails(project)"
-                    ></project-card>
 
-                    <!-- PERSONAL PROJECTS -->
-                    <div
-                        *ngIf="currentPage.personal.length > 0"
-                        class="work-grid-separator bg-acc-primary fg-inverse"
-                        style="grid-row-end: span 2;">
-                        <h5>
-                            Internal Projects
-                        </h5>
-                    </div>
+                <work-grid
+                    [page] = "currentPage"
+                    (select) = "showDetails($event)"
+                >
+                </work-grid>
 
-                    <project-card
-                        *ngFor="let project of currentPage.personal"
-                        [project]="project"
-                        [style.gridRowEnd]="'span '+project.weight"
-                        (click)="showDetails(project)"
-                    ></project-card>
-
-                    <!-- OTHER PROJECTS -->
-                    <div
-                        *ngIf="currentPage.other.length > 0"
-                        class="work-grid-separator bg-acc-primary fg-inverse"
-                        style="grid-row-end: span 2;">
-                        <h5>
-                            Other Projects
-                        </h5>
-                    </div>
-
-                    <project-card
-                        *ngFor="let project of currentPage.other"
-                        [project]="project"
-                        [style.gridRowEnd]="'span '+project.weight"
-                        (click)="showDetails(project)"
-                    ></project-card>
-
-                </section>
                 <work-grid-paginator
                     [pageCount] = "pages.length"
                     (pageChange) = "goToPage($event)"

@@ -13,67 +13,6 @@ main
   flex-direction: column
   justify-content: space-between
 
-.work-grid
-  width: 100%
-  display: grid
-  grid-column-gap: 15px
-  grid-row-gap: 15px
-  grid-auto-flow: column
-
-  grid-template-columns: 1fr
-  margin-bottom: 30px
-
-  $fixed-row-height = 30px
-
-  // This will be flexible
-  grid-template-rows: repeat(40, $fixed-row-height)
-
-  +on-mobile-only()
-    for num in (1..40)
-      &.work-grid--mobile-rows-{num}
-        grid-template-rows: repeat(num, $fixed-row-height)
-
-
-  +on-tablet-only()
-    for num in (1..40)
-      &.work-grid--tablet-rows-{num}
-        grid-template-rows: repeat(num, $fixed-row-height)
-
-
-  +on-tablet-up()
-    grid-template-columns: repeat(2, 1fr)
-
-  +on-desktop-up()
-    height: calc(100% - 70px)
-    margin-bottom: 0
-    grid-template-rows: repeat(10, 1fr)
-    grid-template-columns: repeat(4, 1fr)
-
-
-  .work-grid-separator
-    display: flex
-    align-items: center
-    justify-content: center
-    position: relative
-    h4
-      margin: 0
-
-    &::after
-      $baseBdr = 17;
-      content: ''
-      position: absolute
-      height: 0
-      width: 0
-      border-style: solid
-      border-width: ($baseBdr)px
-      border-top-width: ($baseBdr + 5)px
-      bottom: -(($baseBdr*2) + 5)px
-      border-left-color: transparent
-      border-right-color: transparent
-      border-bottom-color: transparent
-      right: 10px
-      z-index: 1
-
 project-details
   position: absolute
   left: 0

@@ -2,28 +2,12 @@
 //                             My work main page                             //
 ///////////////////////////////////////////////////////////////////////////////
 import { Component, ElementRef } from '@angular/core';
-import { Project } from '../models';
+import { Project, WorkPage } from '../models';
 import { ConfigService, PageService } from '../../core';
 import { WorkService } from '../work.service';
 import { Observable } from 'rxjs/Rx';
 
 import * as _ from 'underscore';
-
-/* Handling projects with weights */
-// Deprecated
-interface WProject {
-    weight: number,
-    project: Project
-}
-
-interface WorkPage {
-    page: number,
-    totalWeight: number,
-    tabletRows: number,   // Number of grid rows to be used for a 2 column layout
-    work: Project[],
-    personal: Project[],
-    other: Project[]
-}
 
 @Component({
     selector: 'my-work-page',
