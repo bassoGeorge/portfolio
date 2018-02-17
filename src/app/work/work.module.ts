@@ -9,7 +9,12 @@ import { MarkdownModule } from 'angular2-markdown';
 
 import { MyWorkPage } from './pages/my-work.page'
 
-import { ProjectCard, ProjectDetails, GridNavigation } from './components';
+import {
+    ProjectCard,
+    ProjectDetails,
+    WorkGridPaginator,
+    WorkGrid
+} from './components';
 import { WorkService } from './work.service';
 
 const workRoutes: Routes = [
@@ -26,7 +31,8 @@ const workRoutes: Routes = [
         MyWorkPage,
         ProjectCard,
         ProjectDetails,
-        GridNavigation
+        WorkGrid,
+        WorkGridPaginator
     ],
     providers: [
         WorkService

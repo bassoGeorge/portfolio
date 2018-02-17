@@ -7,11 +7,11 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import * as _ from 'underscore';
 
 @Component({
-    selector: 'grid-navigation',
-    templateUrl: './grid-navigation.component.html',
-    styleUrls: ['./grid-navigation.component.styl']
+    selector: 'work-grid-paginator',
+    templateUrl: './work-grid-paginator.component.html',
+    styleUrls: ['./work-grid-paginator.component.styl']
 })
-export class GridNavigation {
+export class WorkGridPaginator {
     pages: number[] // We use this to iterrate in ui
 
     @Input() set pageCount(value: number) {
