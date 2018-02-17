@@ -25,8 +25,10 @@ export class MyWorkPage {
     // The current selected project for details view
     selectedProject: Project;
 
-    // Current grid page
-    currentPage: WorkGridPage = {page: 0, totalWeight: 0, tabletRows: 0, work: [], personal: [], other: []};
+    // Current grid page as a getter
+    get currentPage(): WorkGridPage {
+        return this.allData[this.currentPageNumber];
+    }
 
     // All grid pages we received from api yet
     allData: WorkGridPage[] = [];
@@ -37,11 +39,11 @@ export class MyWorkPage {
     // Only when requesting from API will we take into consideration the page id from inside array.
     pages: number[] = [];
 
-    // The current page index as a simple getter
-    get currentPageNumber(): number {
-        return this.pages.indexOf(this.currentPage.page);
-    }
+    // Current page number (index you know)
+    currentPageNumber:number = null;
 
+
+    // Need a loads of things
     constructor(
         private elem: ElementRef,
         private route: ActivatedRoute,
@@ -70,6 +72,49 @@ export class MyWorkPage {
             })
     }
 
+    /* Navigating between pages
+       ====================================================== */
+    // Go to a given page by index
+    goToPage(pageIdx: number) {
+
+        let obs = (this.allData[pageIdx]) ?
+            Observable.of(pageIdx)
+            :
+            this.retrievePageFromApi(pageIdx)
+            .map(page => {
+                this.allData[pageIdx] = page;
+                return pageIdx;
+            });
+
+        obs.subscribe(pageIdx => {
+            this.currentPageNumber = pageIdx;
+
+            // Scroll to top
+            this.pageService.scrollPageTo(this.elem, 0);
+
+            // Update the URL, don't do a refresh
+            let newRoute = this.router
+                .createUrlTree([], {
+                    queryParams: {
+                        page: this.pages[pageIdx]
+                    },
+                    queryParamsHandling: "merge",
+                    relativeTo: this.route
+                })
+                .toString();
+            this.location.go(newRoute);
+        });
+    }
+
+    // Go to given page by api id
+    private goToPageId(pageId: number) {
+        let idx = this.pages.indexOf(pageId);
+        return this.goToPage(idx > -1 ? idx : 0);
+    }
+
+
+    /* Project details
+       ====================================================== */
     showDetails(project: Project) {
         this.selectedProject = project;
 
@@ -90,7 +135,12 @@ export class MyWorkPage {
         this.selectedProject = null;
     }
 
-    retrievePageFromApi(pageIdx: number) {
+
+    /* Other  helper functions
+       ====================================================== */
+
+    // Get a WorkGridPage from API
+    private retrievePageFromApi(pageIdx: number): Observable<WorkGridPage> {
         let pageNum = this.pages[pageIdx];
         return this.workApi.getProjectsForPage(pageNum)
             .reduce((acc, cur) => {
@@ -133,31 +183,4 @@ export class MyWorkPage {
         ;
     }
 
-    goToPage(pageIdx: number) {
-        let obs = (this.allData[pageIdx]) ? Observable.of(this.allData[pageIdx]) : this.retrievePageFromApi(pageIdx);
-        obs.subscribe(page => {
-            this.allData[pageIdx] = page;
-            this.currentPage = page;
-
-            // Scroll to top
-            this.pageService.scrollPageTo(this.elem, 0);
-
-            // Update the URL, don't do a refresh
-            let newRoute = this.router
-                .createUrlTree([], {
-                    queryParams: {
-                        page: this.pages[pageIdx]
-                    },
-                    queryParamsHandling: "merge",
-                    relativeTo: this.route
-                })
-                .toString();
-            this.location.go(newRoute);
-        });
-    }
-
-    private goToPageId(pageId: number) {
-        let idx = this.pages.indexOf(pageId);
-        return this.goToPage(idx > -1 ? idx : 0);
-    }
 }
