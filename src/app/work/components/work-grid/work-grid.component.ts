@@ -2,7 +2,7 @@
 //                      The work grid display component                      //
 ///////////////////////////////////////////////////////////////////////////////
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { WorkPage, Project } from '../../models';
+import { WorkGridPage, Project } from '../../models';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { WorkPage, Project } from '../../models';
     styleUrls: ['/work-grid.component.styl']
 })
 export class WorkGrid {
-    @Input() page: WorkPage
+    @Input() page: WorkGridPage
 
     @Output() select = new EventEmitter();
 

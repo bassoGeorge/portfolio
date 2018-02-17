@@ -2,7 +2,7 @@
 //                             My work main page                             //
 ///////////////////////////////////////////////////////////////////////////////
 import { Component, ElementRef } from '@angular/core';
-import { Project, WorkPage } from '../models';
+import { Project, WorkGridPage } from '../models';
 import { ConfigService, PageService } from '../../core';
 import { WorkService } from '../work.service';
 import { Observable } from 'rxjs/Rx';
@@ -23,10 +23,10 @@ export class MyWorkPage {
     selectedProject: Project;
 
     // Current grid page
-    currentPage: WorkPage = {page: 0, totalWeight: 0, tabletRows: 0, work: [], personal: [], other: []};
+    currentPage: WorkGridPage = {page: 0, totalWeight: 0, tabletRows: 0, work: [], personal: [], other: []};
 
     // All grid pages we received from api yet
-    allData: WorkPage[] = [];
+    allData: WorkGridPage[] = [];
 
     // An array of page ids available to us from api
     // We will not use the ids within this array for handling UI, instead, we will simply use
