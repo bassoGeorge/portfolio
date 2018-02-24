@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Skill, Point } from '../models';
 
 @Component({
     selector: 'skills-page',
@@ -7,6 +8,9 @@ import { Component } from '@angular/core';
 })
 export class SkillsPage {
 
+    public testSkill: Skill;
     ngOnInit() {
+        this.testSkill = new Skill(1, "Angular", 3);
+        this.testSkill.mobilePlacement = {x: 30, y: 20}
     }
 }
