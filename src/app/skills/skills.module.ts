@@ -5,6 +5,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { SkillsPage } from './pages/skills.page';
+import {
+    SkillBubbleComponent
+} from './components';
 
 const skillsRoutes: Routes = [
     { path: '', component: SkillsPage }
@@ -15,6 +18,7 @@ const skillsRoutes: Routes = [
         RouterModule.forChild(skillsRoutes)
     ],
     declarations: [
+        SkillBubbleComponent,
         SkillsPage
     ]
 })

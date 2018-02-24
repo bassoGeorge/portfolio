@@ -1,0 +1,11 @@
+///////////////////////////////////////////////////////////////////////////////
+//                           A simple skill bubble                            //
+///////////////////////////////////////////////////////////////////////////////
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'skill-bubble',
+    template: '<div>hi</div>'
+})
+export class SkillBubbleComponent {
+}
