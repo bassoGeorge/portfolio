@@ -6,7 +6,8 @@ import { Skill } from '../../models';
 
 @Component({
     selector: 'skill-bubble',
-    template: '<div>{{ skill.name }}</div>'
+    templateUrl: './skill-bubble.component.html',
+    styleUrls: [ './skill-bubble.component.styl' ]
 })
 export class SkillBubbleComponent {
     @Input() skill: Skill;

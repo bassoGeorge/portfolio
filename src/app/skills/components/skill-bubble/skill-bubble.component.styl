@@ -1,0 +1,92 @@
+:host
+  display: inline-block
+
+$borderThickness = 2px
+.skill-bubble
+  position: relative
+  border: $borderThickness solid
+  border-radius: 10px
+  padding: 5px 10px
+
+  & > span
+    position: relative
+    z-index: 1
+
+
+// Setting up seudo arrow properties
+$arrowLength = 20px // The parallel length of arrow along connection
+$arrowHeight = 15px // The cross height of arrow, 90deg to connection side
+
+$arrow-base
+  height: 0
+  width: 0
+  border-style: solid
+
+$arrow-corner-down
+  @extend $arrow-base
+  border-width: $arrowHeight $arrowLength
+  margin-top: -( $arrowHeight )
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  // left or right has yet to be decided
+
+$arrow-corner-side
+  @extend $arrow-base
+  border-width: $arrowLength $arrowHeight
+  border-left-color: transparent;
+  border-right-color: transparent;
+  // top or bottom has yet to be decided
+
+$arrow-corner-left
+  @extend $arrow-corner-side
+  margin-right: -( $arrowHeight )
+
+$arrow-corner-right
+  @extend $arrow-corner-side
+  margin-left: -( $arrowHeight )
+
+
+.arrow
+  // z-index: 1 // Doesn't seem to work
+  &::before
+    // border-color: white // todo
+    content: ''
+    display: block
+    position: absolute
+    z-index: -1
+
+  &::after
+    // border-color: black // todo
+    content: ''
+    display: block
+    position: absolute
+
+.arrow.down
+  &::before
+    top: 100%
+  &::after
+    top: "calc(100% - %s)" % ($borderThickness * 2)
+
+.arrow.down.left
+  &::before,
+  &::after
+    @extend $arrow-corner-down
+    border-right-color: transparent
+
+  &::before
+    left: 3px
+
+  &::after
+    left: ( 3px + $borderThickness )
+
+.arrow.down.right
+  &::before,
+  &::after
+    @extend $arrow-corner-down
+    border-left-color: transparent
+
+  &::before
+    right: 3px
+
+  &::after
+    right: ( 3px + $borderThickness )
