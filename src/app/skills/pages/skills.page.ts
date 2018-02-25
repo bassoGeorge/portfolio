@@ -11,6 +11,6 @@ export class SkillsPage {
     public testSkill: Skill;
     ngOnInit() {
         this.testSkill = new Skill(1, "Angular", 3);
-        this.testSkill.mobilePlacement = {x: 30, y: 20}
+        this.testSkill.mobilePlacement = {x: 50, y: 10}
     }
 }
