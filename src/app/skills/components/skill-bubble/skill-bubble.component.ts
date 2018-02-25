@@ -1,8 +1,13 @@
 ///////////////////////////////////////////////////////////////////////////////
 //                           A simple skill bubble                            //
 ///////////////////////////////////////////////////////////////////////////////
-import { Component, Input } from '@angular/core';
-import { Skill } from '../../models';
+import {
+    Component,
+    Input,
+    HostBinding,
+    ElementRef
+} from '@angular/core';
+import { Skill, Point } from '../../models';
 
 @Component({
     selector: 'skill-bubble',
@@ -11,9 +16,21 @@ import { Skill } from '../../models';
 })
 export class SkillBubbleComponent {
     @Input() skill: Skill;
+    @HostBinding('style.left') leftPos: string;
+    @HostBinding('style.top') topPos: string;
 
-    ngOnInit() {
-        // console.log(this.skill.mobilePlacement.x);
-        // console.log(this.skill.desktopPlacement.y);
+    constructor(private elem: ElementRef){}
+
+    ngOnInit() {}
+
+    ngAfterViewInit(){
+        this.setPosition(this.skill.mobilePlacement); // Throws a stupid error, ignore
+    }
+
+    private setPosition(target: Point) {
+        let ourWidth = this.elem.nativeElement.clientWidth;
+        let ourHeight = this.elem.nativeElement.clientHeight;
+        this.leftPos = `calc(${target.x}% - ${ourWidth / 2}px)`;
+        this.topPos = `calc(${target.y}% - ${ourHeight / 2}px)`;
     }
 }
