@@ -1,7 +1,13 @@
+// Some important variables
+$borderThickness = 2px                          // The thickness of the bubble-border
+$arrowLength = 20px                             // The parallel length of arrow along connection
+$arrowHeight = 15px                             // The cross height of arrow, 90deg to connection side
+$cornerOffsetForBottom = 3px                    // offset of the arrow from nearest corner in case of bottom
+$cornerOffsetForSide = -( $borderThickness )    // offset of the arrow from nearest corner in case of sides
+
 :host
   display: inline-block
 
-$borderThickness = 2px
 .skill-bubble
   position: relative
   border: $borderThickness solid
@@ -13,9 +19,10 @@ $borderThickness = 2px
     z-index: 1
 
 
-// Setting up seudo arrow properties
-$arrowLength = 20px // The parallel length of arrow along connection
-$arrowHeight = 15px // The cross height of arrow, 90deg to connection side
+/*
+ Setting up pseudo arrow classes
+ We are only concerned with 3 sides: left, right and bottom
+*/
 
 $arrow-base
   height: 0
@@ -45,7 +52,13 @@ $arrow-corner-right
   @extend $arrow-corner-side
   margin-left: -( $arrowHeight )
 
+/*
+Setting up the arrow classes
 
+primary side selection classes : .left, .right, .down
+secondary classes for .left and .right : .top, .bottom, .center
+secondary classes for .down : .down-left, .down-right, .center
+*/
 .arrow
   // z-index: 1 // Doesn't seem to work
   &::before
@@ -86,10 +99,10 @@ $arrow-corner-right
     border-right-color: transparent
 
   &::before
-    left: 3px
+    left: $cornerOffsetForBottom
 
   &::after
-    left: ( 3px + $borderThickness )
+    left: ( $cornerOffsetForBottom + $borderThickness )
 
 .arrow.down.down-right
   &::before,
@@ -98,10 +111,10 @@ $arrow-corner-right
     border-left-color: transparent
 
   &::before
-    right: 3px
+    right: $cornerOffsetForBottom
 
   &::after
-    right: ( 3px + $borderThickness )
+    right: ( $cornerOffsetForBottom + $borderThickness )
 
 
 .arrow.left.top,
@@ -123,10 +136,10 @@ $arrow-corner-right
     border-bottom-color: transparent
 
   &::before
-    top: 3px
+    top: $cornerOffsetForSide
 
   &::after
-    top: ( 3px + $borderThickness )
+    top: ( $cornerOffsetForSide + $borderThickness )
 
 .arrow.left.bottom,
 .arrow.right.bottom
@@ -135,7 +148,7 @@ $arrow-corner-right
     border-top-color: transparent
 
   &::before
-    bottom: 3px
+    bottom: $cornerOffsetForSide
 
   &::after
-    bottom: ( 3px + $borderThickness )
+    bottom: ( $cornerOffsetForSide + $borderThickness )
