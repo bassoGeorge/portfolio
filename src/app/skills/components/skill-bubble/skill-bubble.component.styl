@@ -67,7 +67,19 @@ $arrow-corner-right
   &::after
     top: "calc(100% - %s)" % ($borderThickness * 2)
 
-.arrow.down.left
+.arrow.left
+  &::before
+    right: 100%
+  &::after
+    right: "calc(100% - %s)" % ($borderThickness * 2)
+
+.arrow.right
+  &::before
+    left: 100%
+  &::after
+    left: "calc(100% - %s)" % ($borderThickness * 2)
+
+.arrow.down.down-left
   &::before,
   &::after
     @extend $arrow-corner-down
@@ -79,7 +91,7 @@ $arrow-corner-right
   &::after
     left: ( 3px + $borderThickness )
 
-.arrow.down.right
+.arrow.down.down-right
   &::before,
   &::after
     @extend $arrow-corner-down
@@ -90,3 +102,40 @@ $arrow-corner-right
 
   &::after
     right: ( 3px + $borderThickness )
+
+
+.arrow.left.top,
+.arrow.left.bottom
+  &::before,
+  &::after
+    @extend $arrow-corner-left
+
+.arrow.right.top,
+.arrow.right.bottom
+  &::before,
+  &::after
+    @extend $arrow-corner-right
+
+.arrow.left.top,
+.arrow.right.top
+  &::before,
+  &::after
+    border-bottom-color: transparent
+
+  &::before
+    top: 3px
+
+  &::after
+    top: ( 3px + $borderThickness )
+
+.arrow.left.bottom,
+.arrow.right.bottom
+  &::before,
+  &::after
+    border-top-color: transparent
+
+  &::before
+    bottom: 3px
+
+  &::after
+    bottom: ( 3px + $borderThickness )
