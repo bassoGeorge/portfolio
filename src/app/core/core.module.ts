@@ -13,6 +13,7 @@ import { CoreHttpInterceptors } from './interceptors';
 import {
     ThemeService,
     ConfigService,
+    CacheService,
     PageService
 } from './services';
 
@@ -47,6 +48,7 @@ declare global {
     providers: [
         ThemeService,
         ConfigService,
+        CacheService,
         PageService,
         ...CoreHttpInterceptors
     ],
