@@ -3,8 +3,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { SkillsPage } from './pages/skills.page';
+import { SkillsService } from './skills.service';
 import {
     SkillBubbleComponent
 } from './components';
@@ -15,11 +17,15 @@ const skillsRoutes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forChild(skillsRoutes)
+        RouterModule.forChild(skillsRoutes),
+        CommonModule
     ],
     declarations: [
         SkillBubbleComponent,
         SkillsPage
+    ],
+    providers: [
+        SkillsService
     ]
 })
 export class SkillsModule { }

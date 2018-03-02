@@ -19,6 +19,7 @@ export class WorkService {
         private http: HttpClient
     ){}
 
+    // TODO: we can optimize this, observable is repeated you see
     getPages() {
         return this.http.get("/api/tables/work_pages/rows", {
             params: new HttpParams()
@@ -27,7 +28,7 @@ export class WorkService {
         }).map(json => json["data"]);
     }
 
-    getProjectsForPage(num: number) {
+    getProjectsForPage(num: number): Observable<Project> {
         return this.http.get("/api/tables/projects/rows", {
             params: new HttpParams()
                 .set('depth', '1')

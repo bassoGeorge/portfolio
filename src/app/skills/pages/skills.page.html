@@ -3,7 +3,8 @@
         <h2>Skills</h2>
         <div class="skills-canvas">
             <skill-bubble
-                [skill] =" testSkill "
+                *ngFor="let skill of skills"
+                [skill] =" skill "
             ></skill-bubble>
         </div>
     </main>
