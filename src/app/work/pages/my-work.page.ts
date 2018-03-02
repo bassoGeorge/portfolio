@@ -31,6 +31,7 @@ export class MyWorkPage {
     }
 
     // All grid pages we received from api yet
+    // TODO: think about using a Map for this
     allData: WorkGridPage[] = [];
 
     // An array of page ids available to us from api

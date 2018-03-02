@@ -3,10 +3,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 import { Injectable } from '@angular/core';
 import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
+    HttpRequest,
+    HttpHandler,
+    HttpEvent,
+    HttpInterceptor
 } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -18,6 +18,7 @@ export class DataApiInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (request.url.indexOf('/api') === 0) {
             let apiRoot = window.location.protocol + "//" + window.location.hostname + ":8888";
+            console.log(request.urlWithParams);
             return next.handle(request.clone({
                 url: request.url.replace("/api", apiRoot + "/api/1.1")
             }));
