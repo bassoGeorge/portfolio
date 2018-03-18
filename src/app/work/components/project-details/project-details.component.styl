@@ -1,3 +1,51 @@
+@require "~styles/_utils"
+$tab_detailMargin = calc(1rem + 20px)  // Gap between edge and detail in tablet
+
+:host
+  position: fixed
+  left: 0
+  top: 0
+  height: "calc(100% - %s)" % $navHeight-mobile
+  width: 100%
+
+  +on-tablet-up()
+    height: "calc(100% - %s)" % $navHeight-tablet
+    padding: 1rem $tab_detailMargin 1rem $tab_detailMargin
+
+  +on-desktop-up()
+    position: absolute
+    height: 100%
+    padding: 0
+
 .project-details
   height: 100%
   width: 100%
+  padding: 20px
+  padding-right: 60px;
+  overflow-x: auto
+  position: relative
+  +on-desktop-up()
+    position: static
+
+  .close
+    display: inline-block
+    margin: 15px
+    padding: 0
+    height: 20px
+
+    position: fixed
+    top: 0
+    right: 0
+
+    +on-tablet-up()
+      top: 1rem
+      right: $tab_detailMargin
+    +on-desktop-up()
+      position: absolute
+      margin-right: 20px
+      top: 0
+      right: 0
+
+  .project-title
+    margin-top: 0
+    margin-bottom: 20px

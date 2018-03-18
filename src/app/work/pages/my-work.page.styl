@@ -3,9 +3,10 @@ main
   width: 100%
 
 .projects-container
-  height: 350px
-  height: 60vh
   position: relative;
+  +on-desktop-up()
+    height: 350px
+    height: 60vh
 
 .work-grid-container
   height: 100%
@@ -14,10 +15,3 @@ main
   justify-content: space-between
   +on-desktop-up()
     max-height: 60rem
-
-project-details
-  position: absolute
-  left: 0
-  top: 0
-  height: 100%
-  width: 100%

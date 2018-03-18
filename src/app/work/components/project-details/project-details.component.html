@@ -1,5 +1,9 @@
 <section class="project-details bg-primary bdr-acc-primary bordered">
-    <button (click)="done()">Close</button>
-    <h1>{{project.title}}</h1>
+    <button
+        (click)="done()"
+        class="close svg-color-primary-on-hover svg-color-primary-on-active"
+        [innerHTML]="closeBtnSVG">
+    </button>
+    <h1 class="project-title">{{project.title}}</h1>
     <markdown [data]="project.fullDescription" ></markdown>
 </section>
