@@ -28,7 +28,8 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.js', '.styl'],
         alias: {
-            styles: path.resolve(appPath, 'assets', 'css')
+            styles: path.resolve(appPath, 'assets', 'css'),
+            docs: path.resolve(appPath, 'assets', 'docs')
         }
     },
 
@@ -98,6 +99,13 @@ module.exports = {
                 loaders: [{
                     loader: 'file-loader',
                     options: { name: 'assets/images/[name].[ext]'}
+                }]
+            },
+            {
+                test: /\.(pdf)$/,
+                loaders: [{
+                    loader: 'file-loader',
+                    options: { name: 'assets/docs/[name].[ext]'}
                 }]
             },
             {

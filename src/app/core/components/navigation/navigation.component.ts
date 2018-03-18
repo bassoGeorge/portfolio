@@ -50,7 +50,7 @@ export class NavigationComponent {
 
     quickLinks: NavInfo[] = [
         this.buildNav('github', "GitHub", 'https://github.com/bassoGeorge', require('./assets/github.svg')),
-        this.buildNav('resume', "Resume", '#', require('./assets/resume.svg'))
+        this.buildNav('resume', "Resume", require('docs/Anish_George_SoftwareDeveloper_Resume.pdf'), require('./assets/resume.svg'))
     ];
 
     toggleQuickLinks = () => this.mShowQuickLinks = !this.mShowQuickLinks;
